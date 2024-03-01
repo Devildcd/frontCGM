@@ -29,6 +29,12 @@ import { ConsejoPopularEditComponent } from './pages/consejos-populares/consejo-
 import { HomeComponent } from './pages/home/home.component';
 import { ProvinciaShowComponent } from './pages/provincias/provincia-show/provincia-show.component';
 import { DistritoShowComponent } from './pages/distritos/distrito-show/distrito-show.component';
+import { ConsejoPopularShowComponent } from './pages/consejos-populares/consejo-popular-show/consejo-popular-show.component';
+import { MunicipioShowComponent } from './pages/municipios/municipio-show/municipio-show.component';
+import { CalleShowComponent } from './pages/calles/calle-show/calle-show.component';
+import { TipoOficinaShowComponent } from './pages/tipos-oficinas/tipo-oficina-show/tipo-oficina-show.component';
+import { OccmShowComponent } from './pages/occm/occm-show/occm-show.component';
+import { OrganismoShowComponent } from './pages/organismos/organismo-show/organismo-show.component';
 
 const routes: Routes = [
 
@@ -37,6 +43,7 @@ const routes: Routes = [
     component: HomeComponent,
     children: [
        
+  //****** Nomencladores******// 
   // provincias
   {
     path:'divisiones/provincias',
@@ -67,6 +74,10 @@ const routes: Routes = [
     path:'divisiones/editar/municipio/:id',
     component: MunicipioEditComponent
   },
+  {
+    path: 'divisiones/detalles/municipio/:id',
+    component: MunicipioShowComponent
+  },
   // distritos
   {
     path:'divisiones/distritos',
@@ -84,6 +95,7 @@ const routes: Routes = [
     path: 'divisiones/detalles/distrito/:id',
     component: DistritoShowComponent
   },
+  // consejos-populares
   {
     path:'divisiones/consejos-populares',
     component: ConsejosPopularesComponent
@@ -97,6 +109,11 @@ const routes: Routes = [
     component: ConsejoPopularEditComponent
   },
   {
+    path: 'divisiones/detalles/consejo-popular/:id',
+    component: ConsejoPopularShowComponent
+  },
+  // calles
+  {
     path:'divisiones/calles',
     component: CallesComponent
   },
@@ -108,6 +125,11 @@ const routes: Routes = [
     path:'divisiones/editar/calle/:id',
     component: CalleEditComponent
   },
+  {
+    path:'divisiones/detalles/calle/:id',
+    component: CalleShowComponent
+  },
+  // tipos-oficinas
   {
     path:'divisiones/tipos-oficinas',
     component: TiposOficinasComponent
@@ -121,6 +143,11 @@ const routes: Routes = [
     component: TipoOficinaEditComponent
   },
   {
+    path:'divisiones/detalles/tipo-oficina/:id',
+    component: TipoOficinaShowComponent
+  },
+  // occm
+  {
     path:'divisiones/occm',
     component: OccmComponent
   },
@@ -133,6 +160,11 @@ const routes: Routes = [
     component: OccmEditComponent
   },
   {
+    path:'divisiones/detalles/occm/:id',
+    component: OccmShowComponent
+  },
+  // organismos
+  {
     path:'divisiones/organismos',
     component: OrganismosComponent
   },
@@ -143,6 +175,10 @@ const routes: Routes = [
   {
     path:'divisiones/editar/organismo/:id',
     component: OrganismoEditComponent
+  },
+  {
+    path:'divisiones/detalles/organismo/:id',
+    component: OrganismoShowComponent
   },
   // rutas Operaciones
   // {

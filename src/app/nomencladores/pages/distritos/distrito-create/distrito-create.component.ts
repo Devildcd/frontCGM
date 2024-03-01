@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Distrito } from 'src/app/nomencladores/interfaces/distritos.interface';
+import { Municipio } from 'src/app/nomencladores/interfaces/municipio.interfaces';
 import { Provincia } from 'src/app/nomencladores/interfaces/provincia.interface';
 import { NomencladoresService } from 'src/app/nomencladores/services/nomencladores.service';
 import Swal from 'sweetalert2';
@@ -25,9 +26,9 @@ export class DistritoCreateComponent {
 
   ngOnInit() {
 
-    this.nomencladoresService.getProvincias().subscribe(
-      ( provincias ) => {
-        this.provincias = provincias;
+    this.nomencladoresService.getMunicipios().subscribe(
+      ( municipios ) => {
+        this.municipios = municipios;
       }
     )
   }

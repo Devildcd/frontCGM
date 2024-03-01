@@ -14,16 +14,6 @@ const routes: Routes = [
       import('./nomencladores/nomencladores.module').then((m) => m.NomencladoresModule),
     // canActivate: [ValidarTokenGuard],
   },
-  // {
-  //   path: 'estudiantes',
-  //   loadChildren: () => import( './estudiantes/estudiantes.module'). then( m => m.EstudiantesModule ),
-  //   canActivate: [ValidarTokenGuard]
-  // },
-  // {
-  //   path: 'asignaturas',
-  //   loadChildren: () => import('./asignaturas/asignaturas.module').then( m => m.AsignaturasModule),
-  //   canActivate: [ValidarTokenGuard]
-  // },
   {
     path: '**', redirectTo: 'nomencladores'
   }

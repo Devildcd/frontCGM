@@ -69,7 +69,7 @@
           
               
               <ng-container matColumnDef="id_provincia">
-                <th mat-header-cell *matHeaderCellDef><strong> ID_Provincia </strong></th>
+                <th mat-header-cell *matHeaderCellDef><strong> Identificador </strong></th>
                 <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let provincia"> <a [routerLink]="['/nomencladores/divisiones/detalles/provincia/', provincia.id]" class="link-estilizado">{{provincia.id_provincia}} </a> </td>
               </ng-container>
             

@@ -39,6 +39,7 @@ import { OrganismoEditComponent } from './pages/organismos/organismo-edit/organi
 import { OrganismoShowComponent } from './pages/organismos/organismo-show/organismo-show.component';
 import { HomeComponent } from './pages/home/home.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ZonasComponent } from './pages/nomencladores/pages/zonas/zonas.component';
 
 
 
@@ -76,7 +77,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     OrganismoCreateComponent,
     OrganismoEditComponent,
     OrganismoShowComponent,
-    HomeComponent
+    HomeComponent,
+    ZonasComponent
   ],
   imports: [
     CommonModule,
