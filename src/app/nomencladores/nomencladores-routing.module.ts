@@ -36,6 +36,11 @@ import { TipoOficinaShowComponent } from './pages/tipos-oficinas/tipo-oficina-sh
 import { OccmShowComponent } from './pages/occm/occm-show/occm-show.component';
 import { OrganismoShowComponent } from './pages/organismos/organismo-show/organismo-show.component';
 
+import { ZonaCreateComponent } from './pages/zonas/zona-create/zona-create.component';
+import { ZonaEditComponent } from './pages/zonas/zona-edit/zona-edit.component';
+import { ZonaShowComponent } from './pages/zonas/zona-show/zona-show.component';
+import { ZonasComponent } from './pages/zonas/zonas.component';
+
 const routes: Routes = [
 
   {
@@ -61,6 +66,7 @@ const routes: Routes = [
     path:'divisiones/detalles/provincia/:id',
     component: ProvinciaShowComponent
   },
+
   // municipios
   {
     path:'divisiones/municipios',
@@ -78,6 +84,7 @@ const routes: Routes = [
     path: 'divisiones/detalles/municipio/:id',
     component: MunicipioShowComponent
   },
+
   // distritos
   {
     path:'divisiones/distritos',
@@ -95,6 +102,7 @@ const routes: Routes = [
     path: 'divisiones/detalles/distrito/:id',
     component: DistritoShowComponent
   },
+
   // consejos-populares
   {
     path:'divisiones/consejos-populares',
@@ -112,6 +120,7 @@ const routes: Routes = [
     path: 'divisiones/detalles/consejo-popular/:id',
     component: ConsejoPopularShowComponent
   },
+
   // calles
   {
     path:'divisiones/calles',
@@ -129,6 +138,7 @@ const routes: Routes = [
     path:'divisiones/detalles/calle/:id',
     component: CalleShowComponent
   },
+
   // tipos-oficinas
   {
     path:'divisiones/tipos-oficinas',
@@ -146,6 +156,7 @@ const routes: Routes = [
     path:'divisiones/detalles/tipo-oficina/:id',
     component: TipoOficinaShowComponent
   },
+
   // occm
   {
     path:'divisiones/occm',
@@ -163,6 +174,7 @@ const routes: Routes = [
     path:'divisiones/detalles/occm/:id',
     component: OccmShowComponent
   },
+
   // organismos
   {
     path:'divisiones/organismos',
@@ -179,6 +191,20 @@ const routes: Routes = [
   {
     path:'divisiones/detalles/organismo/:id',
     component: OrganismoShowComponent
+  },
+
+  // zonas
+  {
+    path: 'divisiones/zonas', component: ZonasComponent
+  },
+  {
+    path: 'divisiones/crear/zona', component: ZonaCreateComponent
+  },
+  {
+    path: 'divisiones/editar/zona', component: ZonaEditComponent
+  },
+  {
+    path: 'divisiones/detalles/zona', component: ZonaShowComponent
   },
   // rutas Operaciones
   // {

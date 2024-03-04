@@ -81,7 +81,7 @@
 
               <ng-container matColumnDef="municipio_id">
                 <th mat-header-cell *matHeaderCellDef><strong> Municipio </strong></th>
-                <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let distrito"> <a [routerLink]="['/nomencladores/divisiones/detalles/distrito/', distrito.id]" class="link-estilizado"> {{distrito.municipio_id}} </a> </td>
+                <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let distrito"> <a [routerLink]="['/nomencladores/divisiones/detalles/distrito/', distrito.id]" class="link-estilizado"> {{distrito.municipio_id.nombre}} </a> </td>
               </ng-container>
             
               <!-- <ng-container matColumnDef="activo">

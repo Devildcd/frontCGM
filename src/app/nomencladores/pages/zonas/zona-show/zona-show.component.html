@@ -1,4 +1,5 @@
 
+
 <div *ngIf="loading" class="spinner-border text-primary" role="status">
     <span class="visually-hidden">Loading...</span>
   </div>
@@ -9,7 +10,7 @@
       <div class="card-header">
         <div class="row">
           <div class="col-md-8">
-              <h2 style="color: rgb(95, 95, 95);">Editar Zona</h2>
+              <h2 style="color: rgb(95, 95, 95);">Detalles de la Zona</h2>
           </div>
       </div>
   
@@ -19,18 +20,16 @@
             <div class="example-inline-container">
                 <mat-form-field class="example-form-field">
                   <mat-label>Identificador</mat-label>
-                  <input matInput formControlName="id_zona" required>
+                  <input matInput formControlName="id_zona" readonly>
                 </mat-form-field>
               
                 <mat-form-field class="example-form-field">
                   <mat-label>Nombre</mat-label>
-                  <input matInput formControlName="nombre" required>
+                  <input matInput formControlName="nombre" readonly>
                 </mat-form-field>
               </div>
 
               <div class="example-button-container">
-                <!-- Agrega tus botones aquí -->
-                <button mat-raised-button (click)="editarZona()" color="primary" style="margin-right: 5px;">Aceptar</button>
                 <button mat-raised-button [routerLink]="['/nomencladores/divisiones/zonas']" color="secundary">Volver</button>
               </div>
     
@@ -39,5 +38,3 @@
  
     </div>
   </div> 
-
-

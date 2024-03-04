@@ -7,6 +7,7 @@ import { Municipio } from '../interfaces/municipio.interfaces';
 import { Zona } from '../interfaces/zona.interface';
 import { Distrito } from '../interfaces/distritos.interface';
 import { ConsejoPopular } from '../interfaces/consejo-popular.interface';
+import { Calle } from '../interfaces/calles.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +17,7 @@ export class NomencladoresService {
   baseUrl: string = environment.baseUrlNomencladores;
 
   constructor( private http: HttpClient ) { }
+  
 
   // ******Funciones para Provincias********
   getProvincias(): Observable<Provincia[]> {
@@ -48,6 +50,7 @@ export class NomencladoresService {
 
     return this.http.delete<Provincia>( `${this.baseUrl}/eliminar/provincia/${id}/` );
   }
+
 
 // ******Funciones para Municipio********
 
@@ -82,7 +85,7 @@ deleteMunicipio( id: number ): Observable<Municipio> {
 
 
 
-// ******Funciones para Zona********
+// ******Funciones para Zonas********
 getZonas(): Observable<Zona[]> {
   return this.http.get<Zona[]>(`${this.baseUrl}/lista/zona`);
 }
@@ -105,6 +108,7 @@ deleteZona( id: number ): Observable<Zona> {
 
   return this.http.delete<Zona>( `${this.baseUrl}/eliminar/zona/${id}/` );
 }
+
 
   // ******Funciones para Distritos********
   getDistritos(): Observable<Distrito[]> {
@@ -136,6 +140,7 @@ deleteZona( id: number ): Observable<Zona> {
     return this.http.delete<Distrito>( `${this.baseUrl}/eliminar/distrito/${id}/` );
   }
 
+
    // ******Funciones para Consejos Populares********
    getConsejoPopulares(): Observable<ConsejoPopular[]> {
 
@@ -164,6 +169,37 @@ deleteZona( id: number ): Observable<Zona> {
   deleteConsejoPopular( id:number ): Observable<ConsejoPopular> {
 
     return this.http.delete<ConsejoPopular>( `${this.baseUrl}/eliminar/cpopular/${id}/` );
+  }
+
+
+  // ******Funciones para Calles********
+  getCalles(): Observable<Calle[]> {
+
+    return this.http.get<Calle[]>( `${this.baseUrl}/lista/calle/` );
+  }
+
+
+  getCalle( id:number ): Observable<Calle> {
+
+    return this.http.get<Calle>( `${this.baseUrl}/detalle/calle/${id}/`  );
+  }
+
+
+  postCalle( calle: Calle ): Observable<Calle> {
+
+    return this.http.post<Calle>( `${this.baseUrl}/crear/calle/`, calle );
+  }
+
+
+  putCalle( id: number, calle: ConsejoPopular ): Observable<Calle> {
+
+    return this.http.put<Calle>( `${this.baseUrl}/editar/calle/${id}/`, calle );
+  }
+  
+
+  deleteCalle( id:number ): Observable<Calle> {
+
+    return this.http.delete<Calle>( `${this.baseUrl}/eliminar/calle/${id}/` );
   }
 
 }
