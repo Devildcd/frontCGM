@@ -1,3 +1,4 @@
+import { Municipio } from "./municipio.interfaces";
 
 export interface Distrito {
     id?: number,
@@ -5,5 +6,5 @@ export interface Distrito {
     nombre: string,
     activo: boolean,
     occm?: any,
-    municipio_id: number
+    municipio_id: Municipio
 }

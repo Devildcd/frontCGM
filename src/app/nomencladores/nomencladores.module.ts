@@ -39,7 +39,10 @@ import { OrganismoEditComponent } from './pages/organismos/organismo-edit/organi
 import { OrganismoShowComponent } from './pages/organismos/organismo-show/organismo-show.component';
 import { HomeComponent } from './pages/home/home.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { ZonasComponent } from './pages/nomencladores/pages/zonas/zonas.component';
+import { ZonasComponent } from './pages/zonas/zonas.component';
+import { ZonaShowComponent } from './pages/zonas/zona-show/zona-show.component';
+import { ZonaEditComponent } from './pages/zonas/zona-edit/zona-edit.component';
+import { ZonaCreateComponent } from './pages/zonas/zona-create/zona-create.component';
 
 
 
@@ -78,7 +81,11 @@ import { ZonasComponent } from './pages/nomencladores/pages/zonas/zonas.componen
     OrganismoEditComponent,
     OrganismoShowComponent,
     HomeComponent,
-    ZonasComponent
+    ZonasComponent,
+    ZonaShowComponent,
+    ZonaEditComponent,
+    ZonaCreateComponent,
+  
   ],
   imports: [
     CommonModule,

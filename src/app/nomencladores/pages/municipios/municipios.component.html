@@ -6,7 +6,7 @@
         <div class="row">
           <div class="col-md-8">
              
-              <h2 style="color: rgb(95, 95, 95);">Municipio</h2>
+              <h2 style="color: rgb(95, 95, 95);">Municipios</h2>
           </div>
           
           <div class="row justify-content-end">
@@ -82,8 +82,8 @@
               </ng-container>
 
               <ng-container matColumnDef="provincia_id">
-                <th mat-header-cell *matHeaderCellDef><strong> ID_Provincia </strong></th>
-                <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let municipio"> {{municipio.provincia_id}} </td>
+                <th mat-header-cell *matHeaderCellDef><strong> Provincia </strong></th>
+                <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let municipio"> {{municipio.provincia_id.nombre}} </td>
               </ng-container>
             
               <!-- <ng-container matColumnDef="activo">
@@ -131,4 +131,3 @@
         </div>
     </div>
   </div> 
-

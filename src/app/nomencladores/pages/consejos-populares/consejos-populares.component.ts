@@ -16,7 +16,8 @@ import Swal from 'sweetalert2';
 export class ConsejosPopularesComponent {
 
   cpopulares: ConsejoPopular[] = [];
-  displayedColumns: string[] = ['select', 'id_cpopular', 'nombre', 'occm', 'municipio_id', 'distrito_id', 'actions'];
+  displayedColumns: string[] = ['select', 'id_cpopular', 'nombre', 'municipio_id', 'distrito_id', 'actions'];
+  // displayedColumns: string[] = ['select', 'id_cpopular', 'nombre', 'occm', 'municipio_id', 'distrito_id', 'actions'];
   dataSource = new MatTableDataSource<ConsejoPopular>([]);
   selection = new SelectionModel<ConsejoPopular>(true, []);
   loading = true;

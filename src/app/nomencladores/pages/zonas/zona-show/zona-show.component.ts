@@ -40,6 +40,4 @@ export class ZonaShowComponent {
       nombre: [''],
       activo: [true],
     });
-
-
 }

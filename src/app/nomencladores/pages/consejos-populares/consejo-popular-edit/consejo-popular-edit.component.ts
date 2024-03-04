@@ -38,7 +38,15 @@ export class ConsejoPopularEditComponent {
         this.loading = false;
         console.log(  this.cpopulares );
 
-        this.formEditar.patchValue({ ...cpopulares });
+        // this.formEditar.patchValue({ ...cpopulares });
+        this.formEditar.patchValue({ 
+          id_cpopular: cpopulares.id_cpopular,
+          nombre: cpopulares.nombre,
+          occm: cpopulares.occm,
+          municipio_id: cpopulares.municipio_id.id,
+          distrito_id: cpopulares.distrito_id.id,
+          activo: cpopulares.activo
+         });
       });
       this.nomencladoresService.getMunicipios().subscribe(
         (municipios)=>{
