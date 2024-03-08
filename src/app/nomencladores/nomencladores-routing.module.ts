@@ -44,6 +44,14 @@ import { CalendariosComponent } from './pages/calendarios/calendarios.component'
 import { CalendariosCreateComponent } from './pages/calendarios/calendarios-create/calendarios-create.component';
 import { CalendariosShowComponent } from './pages/calendarios/calendarios-show/calendarios-show.component';
 import { CalendariosEditComponent } from './pages/calendarios/calendarios-edit/calendarios-edit.component';
+import { TiposMultasComponent } from './pages/tipos-multas/tipos-multas.component';
+import { TipoMultaCreateComponent } from './pages/tipos-multas/tipo-multa-create/tipo-multa-create.component';
+import { TipoMultaEditComponent } from './pages/tipos-multas/tipo-multa-edit/tipo-multa-edit.component';
+import { TipoMultaShowComponent } from './pages/tipos-multas/tipo-multa-show/tipo-multa-show.component';
+import { DecretoLeyComponent } from './pages/decreto-ley/decreto-ley.component';
+import { DecretoLeyCreateComponent } from './pages/decreto-ley/decreto-ley-create/decreto-ley-create.component';
+import { DecretoLeyEditComponent } from './pages/decreto-ley/decreto-ley-edit/decreto-ley-edit.component';
+import { DecretoLeyShowComponent } from './pages/decreto-ley/decreto-ley-show/decreto-ley-show.component';
 
 const routes: Routes = [
 
@@ -225,33 +233,35 @@ const routes: Routes = [
         path: 'divisiones/detalles/calendario/:id', component: CalendariosShowComponent
       },
 
-      //Tipo de Oficina
-      {
-        path: 'divisiones/tipoOficinas', component: TiposOficinasComponent
-      },
-      {
-        path: 'divisiones/crear/tipoOficina', component: TipoOficinaCreateComponent
-      },
-      {
-        path: 'divisiones/editar/tipoOficina/:id', component: TipoOficinaEditComponent
-      },
-      {
-        path: 'divisiones/detalles/tipoOficina/:id', component: TipoOficinaShowComponent
-      },
+      
+	  
+	  // tipos-multas
+  {
+    path: 'divisiones/tipos-multas', component: TiposMultasComponent
+  },
+  {
+    path: 'divisiones/crear/tipo-multa', component: TipoMultaCreateComponent
+  },
+  {
+    path: 'divisiones/editar/tipo-multa/:id', component: TipoMultaEditComponent
+  },
+  {
+    path: 'divisiones/detalles/tipo-multa/:id', component: TipoMultaShowComponent
+  },
 
-      //Tipo de Oficina
-      {
-        path: 'divisiones/tipoOficinas', component: TiposOficinasComponent
-      },
-      {
-        path: 'divisiones/crear/tipoOficina', component: TipoOficinaCreateComponent
-      },
-      {
-        path: 'divisiones/editar/tipoOficina/:id', component: TipoOficinaEditComponent
-      },
-      {
-        path: 'divisiones/detalles/tipoOficina/:id', component: TipoOficinaShowComponent
-      },
+  // decreto-ley
+  {
+    path: 'divisiones/decretos-ley', component: DecretoLeyComponent
+  },
+  {
+    path: 'divisiones/crear/decreto-ley', component: DecretoLeyCreateComponent
+  },
+  {
+    path: 'divisiones/editar/decreto-ley/:id', component: DecretoLeyEditComponent
+  },
+  {
+    path: 'divisiones/detalles/decreto-ley/:id', component: DecretoLeyShowComponent
+  },
 
       // rutas Operaciones
       // {

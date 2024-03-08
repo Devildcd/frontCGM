@@ -1,4 +1,5 @@
 
+
 <div class="container-pers">
 
     <div class="card card d-flex flex-column">
@@ -6,7 +7,7 @@
         <div class="row">
           <div class="col-md-8">
              
-              <h2 style="color: rgb(95, 95, 95);">Tipos de Oficinas</h2>
+              <h2 style="color: rgb(95, 95, 95);">Decretos Ley</h2>
           </div>
           
           <div class="row justify-content-end">
@@ -28,7 +29,7 @@
           <div class="row mt-3">
             <div class="col-md-8">
               <div class="button-pers">
-                <button mat-raised-button color="primary" [routerLink]="['/nomencladores/divisiones/crear/tipo-oficina']">Crear</button>
+                <button mat-raised-button color="primary" [routerLink]="['/nomencladores/divisiones/crear/decreto-ley']">Crear</button>
                 <button mat-raised-button color="secundary" style="margin-left: 5px;">Importar</button>
               </div>
             </div>
@@ -68,15 +69,15 @@
               </ng-container> 
           
               
-              <ng-container matColumnDef="identificador">
+              <ng-container matColumnDef="id_decreto_ley">
                 <th mat-header-cell *matHeaderCellDef><strong> Identificador </strong></th>
-                <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let tipoOficina"> <a [routerLink]="['/nomencladores/divisiones/detalles/tipo-oficina/', tipoOficina.id]" class="link-estilizado">{{tipoOficina.identificador}} </a> </td>
+                <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let element"> <a [routerLink]="['/nomencladores/divisiones/detalles/decreto-ley/', element.id]" class="link-estilizado"> {{element.id_decreto_ley}} </a> </td>
               </ng-container>
             
               
               <ng-container matColumnDef="descripcion">
-                <th mat-header-cell *matHeaderCellDef><strong> Descripción</strong></th>
-                <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let tipoOficina"> <a [routerLink]="['/nomencladores/divisiones/detalles/tipo-oficina/', tipoOficina.id]" class="link-estilizado">{{tipoOficina.descripcion}} </a> </td>
+                <th mat-header-cell *matHeaderCellDef><strong> Nombre </strong></th>
+                <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let element"> <a [routerLink]="['/nomencladores/divisiones/detalles/decreto-ley/', element.id]" class="link-estilizado"> {{element.descripcion}} </a> </td>
               </ng-container>
             
               <!-- <ng-container matColumnDef="activo">
@@ -88,10 +89,10 @@
                 <th mat-header-cell *matHeaderCellDef><strong>Acciones</strong></th>
                 <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let element">
                   <div class="d-flex">
-                    <button [routerLink]="['/nomencladores/divisiones/editar/tipo-oficina', element.id]" mat-mini-fab color="primary" style="margin-right: 5px;">
-                      <i class="fa fa-edit" aria-hidden="true"></i>
+                    <button mat-mini-fab color="primary" [routerLink]="['/nomencladores/divisiones/editar/decreto-ley/', element.id]" aria-hidden="true" style="margin-right: 5px;">
+                      <i class="fa fa-edit"></i>
                      </button>
-                     <button mat-mini-fab (click)="eliminarTipoOficina(element.id)" color="warn">
+                     <button mat-mini-fab (click)="eliminarProvincia(element.id)" color="warn">
                         <i class="fa fa-trash" aria-hidden="true"></i>
                      </button>
                   </div>

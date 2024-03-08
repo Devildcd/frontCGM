@@ -2,18 +2,18 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { switchMap } from 'rxjs';
-import { tipoOficina } from 'src/app/nomencladores/interfaces/tipo-oficina.interface';
+import { DecretoLey } from 'src/app/nomencladores/interfaces/decreto-ley.interface';
 import { NomencladoresService } from 'src/app/nomencladores/services/nomencladores.service';
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-tipo-oficina-edit',
-  templateUrl: './tipo-oficina-edit.component.html',
-  styleUrls: ['./tipo-oficina-edit.component.css']
+  selector: 'app-decreto-ley-edit',
+  templateUrl: './decreto-ley-edit.component.html',
+  styleUrls: ['./decreto-ley-edit.component.css']
 })
-export class TipoOficinaEditComponent {
+export class DecretoLeyEditComponent {
 
-  tipoOficina!: tipoOficina;
+  decreto!: DecretoLey;
   submitted = false;
   loading = true;
 
@@ -28,24 +28,28 @@ export class TipoOficinaEditComponent {
 
     this.activeRoute.params
       .pipe(
-        switchMap(({ id }) => this.nomencladoresService.getTipoOficina( id ))
+        switchMap(({ id }) => this.nomencladoresService.getDecreto( id ))
       )
-      .subscribe((tipoOficina) => {
-        this.tipoOficina = tipoOficina;
+      .subscribe((decreto) => {
+        this.decreto = decreto;
         this.loading = false;
-        console.log( tipoOficina );
+        console.log(  this.decreto );
 
-        this.formEditar.patchValue({ ...tipoOficina });
+        this.formEditar.patchValue({ 
+          id_decreto_ley: decreto.id_decreto_ley,
+          descripcion: decreto.descripcion,
+          activo: decreto.activo,
+         });
       });
   }
 
   formEditar: FormGroup = this.fb.group({
-    identificador: ['', Validators.required],
+    id_decreto_ley: ['', Validators.required],
     descripcion: ['', Validators.required],
     activo: [true],
   });
 
-  editartipoOficina() {
+  editarDecreto() {
 
     if ( this.formEditar.untouched ) {
       // El formulario es inválido o no se ha tocado
@@ -58,19 +62,19 @@ export class TipoOficinaEditComponent {
       return;
     }
 
-    const tipoOficina = this.formEditar.value;
-    this.nomencladoresService.putTipoOficina( this.tipoOficina.id!, tipoOficina ).subscribe(
-      (provincia) => {
+    const municipio = this.formEditar.value;
+    this.nomencladoresService.putDecreto( this.decreto.id!, municipio ).subscribe(
+      (decreto) => {
         Swal.fire({
           icon: 'success',
           title: '¡Éxito!',
-          text: 'Tipo de Oficina actualizada',
+          text: 'Decreto Ley actualizado',
           showConfirmButton: false,
         });
         setTimeout(() => {
           location.reload();
         }, 1000);
-        this.router.navigate(['/nomencladores/divisiones/tipoOficinas']);
+        this.router.navigate(['/nomencladores/divisiones/decretos-ley']);
       }
       // error => {
       //   console.log('Error:', error);
@@ -89,5 +93,3 @@ export class TipoOficinaEditComponent {
     );
   }
 }
-
-

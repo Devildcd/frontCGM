@@ -1,33 +1,35 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { tipoOficina } from 'src/app/nomencladores/interfaces/tipo-oficina.interface';
+import { DecretoLey } from 'src/app/nomencladores/interfaces/decreto-ley.interface';
 import { NomencladoresService } from 'src/app/nomencladores/services/nomencladores.service';
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-tipo-oficina-create',
-  templateUrl: './tipo-oficina-create.component.html',
-  styleUrls: ['./tipo-oficina-create.component.css']
+  selector: 'app-decreto-ley-create',
+  templateUrl: './decreto-ley-create.component.html',
+  styleUrls: ['./decreto-ley-create.component.css']
 })
-export class TipoOficinaCreateComponent {
+export class DecretoLeyCreateComponent {
 
-  tipoOficina!: tipoOficina;
-  submitted = false;
-
+  decreto!: DecretoLey;
+  
   constructor(
     private fb: FormBuilder,
     private nomencladoresService: NomencladoresService,
     private router: Router
   ) {}
 
+  ngOnInit(){
+  }
+
   formCrear: FormGroup = this.fb.group({
-    identificador: ['', Validators.required],
+    id_decreto_ley: ['', Validators.required],
     descripcion: ['', Validators.required],
     activo: [true],
   });
 
-  crearTipoOficina() {
+  crearDecreto() {
 
     if (this.formCrear.invalid || this.formCrear.untouched) {
       // El formulario es inválido o no se ha tocado
@@ -40,21 +42,21 @@ export class TipoOficinaCreateComponent {
       return;
     }
 
-    this.tipoOficina = {
+    this.decreto = {
       ...this.formCrear.value,
     };
-    this.nomencladoresService.postTipoOficina(this.tipoOficina).subscribe(
-      (tipoOficinaCreada) => {
-        this.tipoOficina = tipoOficinaCreada;
+    this.nomencladoresService.postDecreto(this.decreto).subscribe(
+      (decretoDecreado) => {
+        this.decreto = decretoDecreado;
         Swal.fire({
           icon: 'success',
           title: '¡Éxito!',
-          text: 'Tipo Oficina creada',
+          text: 'Decreto Ley creado',
           showConfirmButton: false,
           timer: 1000,
         });
         setTimeout(() => {
-          this.router.navigate(['/nomencladores/divisiones/detalles/tipoOficina', this.tipoOficina.id]);
+          this.router.navigate(['/nomencladores/divisiones/detalles/decreto-ley', this.decreto.id]);
         }, 1000);
       }
       // error => {
@@ -73,5 +75,4 @@ export class TipoOficinaCreateComponent {
       // }
     );
   }
-
 }
