@@ -11,6 +11,8 @@ import { Calle } from '../interfaces/calles.interface';
 import { Calendario } from '../interfaces/calendario.interface';
 import { tipoOficina } from '../interfaces/tipo-oficina.interface';
 import { OCCM } from '../interfaces/occm.interface';
+import { DecretoLey } from '../interfaces/decreto-ley.interface';
+import { TipoMulta } from '../interfaces/tipo-multa.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -237,31 +239,31 @@ export class NomencladoresService {
   }
 
   // ******Funciones para Tipo de Oficinas********
-  gettipoOficinas(): Observable<tipoOficina[]> {
+  getTipoOficinas(): Observable<tipoOficina[]> {
 
     return this.http.get<tipoOficina[]>(`${this.baseUrl}/lista/tipoOficina/`);
   }
 
 
-  gettipoOficina(id: number): Observable<tipoOficina> {
+  getTipoOficina(id: number): Observable<tipoOficina> {
 
     return this.http.get<tipoOficina>(`${this.baseUrl}/detalle/tipoOficina/${id}/`);
   }
 
 
-  posttipoOficina(oficina: tipoOficina): Observable<tipoOficina> {
+  postTipoOficina(oficina: tipoOficina): Observable<tipoOficina> {
 
     return this.http.post<tipoOficina>(`${this.baseUrl}/crear/tipoOficina/`, oficina);
   }
 
 
-  puttipoOficina(id: number, oficina: tipoOficina): Observable<Calendario> {
+  putTipoOficina(id: number, oficina: tipoOficina): Observable<Calendario> {
 
     return this.http.put<tipoOficina>(`${this.baseUrl}/editar/tipoOficina/${id}/`, oficina);
   }
 
 
-  deletetipoOficina(id: number): Observable<tipoOficina> {
+  deleteTipoOficina(id: number): Observable<tipoOficina> {
 
     return this.http.delete<tipoOficina>(`${this.baseUrl}/eliminar/tipoOficina/${id}/`);
   }
@@ -294,6 +296,67 @@ export class NomencladoresService {
   deleteOCCM(id: number): Observable<OCCM> {
 
     return this.http.delete<OCCM>(`${this.baseUrl}/eliminar/occm/${id}/`);
+  }
+  
+  // ******Funciones para Decreto-ley********
+  getDecretos(): Observable<DecretoLey[]> {
+
+    return this.http.get<DecretoLey[]>( `${this.baseUrl}/lista/DecretoLey/` );
+  }
+
+
+  getDecreto( id:number ): Observable<DecretoLey> {
+
+    return this.http.get<DecretoLey>( `${this.baseUrl}/detalle/DecretoLey/${id}/`  );
+  }
+
+
+  postDecreto( calle: DecretoLey ): Observable<DecretoLey> {
+
+    return this.http.post<DecretoLey>( `${this.baseUrl}/crear/DecretoLey/`, calle );
+  }
+
+
+  putDecreto( id: number, calle: DecretoLey ): Observable<DecretoLey> {
+
+    return this.http.put<DecretoLey>( `${this.baseUrl}/editar/DecretoLey/${id}/`, calle );
+  }
+  
+
+  deleteDecreto( id:number ): Observable<DecretoLey> {
+
+    return this.http.delete<DecretoLey>( `${this.baseUrl}/eliminar/DecretoLey/${id}/` );
+  }
+
+
+  // ******Funciones para tipo-multa********
+  getTiposMultas(): Observable<TipoMulta[]> {
+
+    return this.http.get<TipoMulta[]>( `${this.baseUrl}/lista/tipoMulta/` );
+  }
+
+
+  getTipoMulta( id:number ): Observable<TipoMulta> {
+
+    return this.http.get<TipoMulta>( `${this.baseUrl}/detalle/tipoMulta/${id}/`  );
+  }
+
+
+  postTipoMulta( calle: TipoMulta ): Observable<TipoMulta> {
+
+    return this.http.post<TipoMulta>( `${this.baseUrl}/crear/tipoMulta/`, calle );
+  }
+
+
+  putTipoMulta( id: number, calle: TipoMulta ): Observable<TipoMulta> {
+
+    return this.http.put<TipoMulta>( `${this.baseUrl}/editar/tipoMulta/${id}/`, calle );
+  }
+  
+
+  deleteTipoMulta( id:number ): Observable<Calle> {
+
+    return this.http.delete<Calle>( `${this.baseUrl}/eliminar/tipoMulta/${id}/` );
   }
 
 }

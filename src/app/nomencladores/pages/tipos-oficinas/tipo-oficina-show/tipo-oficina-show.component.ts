@@ -24,7 +24,7 @@ export class TipoOficinaShowComponent {
 
     this.activeRoute.params
       .pipe(
-        switchMap(({ id }) => this.nomencladoresService.gettipoOficina( id ))
+        switchMap(({ id }) => this.nomencladoresService.getTipoOficina( id ))
       )
       .subscribe((tipoOficina) => {
         this.tipoOficina = tipoOficina;

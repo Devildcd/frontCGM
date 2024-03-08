@@ -1,68 +1,61 @@
-import { Component, ViewChild } from '@angular/core';
-import { tipoOficina } from '../../interfaces/tipo-oficina.interface';
-import { MatTableDataSource } from '@angular/material/table';
 import { SelectionModel } from '@angular/cdk/collections';
+import { Component, ViewChild } from '@angular/core';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
-import { NomencladoresService } from '../../services/nomencladores.service';
+import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
-import { catchError, throwError } from 'rxjs';
 import Swal from 'sweetalert2';
+import { DecretoLey } from '../../interfaces/decreto-ley.interface';
+import { NomencladoresService } from '../../services/nomencladores.service';
 
 @Component({
-  selector: 'app-tipos-oficinas',
-  templateUrl: './tipos-oficinas.component.html',
-  styleUrls: ['./tipos-oficinas.component.css']
+  selector: 'app-decreto-ley',
+  templateUrl: './decreto-ley.component.html',
+  styleUrls: ['./decreto-ley.component.css']
 })
-export class TiposOficinasComponent {
+export class DecretoLeyComponent {
 
-
-  oficinas: tipoOficina[] = [];
-  displayedColumns: string[] = ['select', 'identificador', 'descripcion', 'actions'];
-  dataSource = new MatTableDataSource<tipoOficina>([]);
-  selection = new SelectionModel<tipoOficina>(true, []);
+  decretos: DecretoLey[] = [];
+  displayedColumns: string[] = ['select', 'id_decreto_ley', 'descripcion', 'actions'];
+  dataSource = new MatTableDataSource<DecretoLey>([]);
+  selection = new SelectionModel<DecretoLey>(true, []);
   loading = true;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  constructor( 
-    private nomencladoresService: NomencladoresService, 
-    private router: Router ) {}
+  constructor( private nomencladoresService: NomencladoresService, private router: Router ) {}
 
   ngOnInit() {
-    this.cargartipoOficina();
+    this.cargarProvincias();
   }
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
   }
 
-  cargartipoOficina() {
-    this.nomencladoresService
-      .getTipoOficinas()
-      .pipe(
-        catchError((error) => {
-          console.log('Error:', error);
-          // if (error.error.message === 'Unauthenticated.') {
-          //   Swal.fire({
-          //     icon: 'error',
-          //     title: '¡Tu sesión ha expirado!',
-          //     text: 'Por favor, vuelve a iniciar sesión',
-          //     showConfirmButton: false,
-          //     timer: 1000, // Duración en milisegundos (1 segundo)
-          //   }).then(() => {
-          //     this.router.navigateByUrl('/auth/login');
-          //   });
-          // }
-          return throwError('Ha ocurrido un error en la API');
-        })
-      )
-      .subscribe((oficinas) => {
-        this.oficinas = oficinas;
-        this.dataSource.data = oficinas;
-        console.log(this.oficinas);
+  cargarProvincias() {
+
+    this.nomencladoresService.getDecretos().subscribe(
+      (decretos) => {
+        this.decretos = decretos;
+        this.dataSource.data = decretos;
+        console.log(this.decretos);
         this.loading = false;
-        // console.log(this.token);
-      });
+      },
+      // (error) => {
+      //   console.log('Error:', error);
+      //   if (error.error && error.error.message === 'Unauthenticated.') {
+      //     Swal.fire({
+      //       icon: 'error',
+      //       title: '¡Tu sesión ha expirado!',
+      //       text: 'Por favor, vuelve a iniciar sesión',
+      //       showConfirmButton: false,
+      //       timer: 1000 // Duración en milisegundos (1 segundo)
+      //     }).then(() => {
+      //       this.router.navigateByUrl('/auth/login');
+      //     });
+      //   }
+      // }
+    );
   }
 
   /** Whether the number of selected elements matches the total number of rows. */
@@ -83,11 +76,11 @@ export class TiposOficinasComponent {
   }
 
   /** The label for the checkbox on the passed row */
-  checkboxLabel(row?: tipoOficina): string {
+  checkboxLabel(row?: DecretoLey): string {
     if (!row) {
       return `${this.isAllSelected() ? 'deselect' : 'select'} all`;
     }
-    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.identificador + 1}`;
+    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.id_decreto_ley + 1}`;
   }
 
   length = 50;
@@ -115,7 +108,7 @@ export class TiposOficinasComponent {
     }
   }
 
-  eliminarTipoOficina(id: number) {
+  eliminarProvincia(id: number) {
     if (id !== undefined) {
       Swal.fire({
         title: '¿Estás seguro?',
@@ -128,11 +121,11 @@ export class TiposOficinasComponent {
         cancelButtonText: 'Cancelar',
       }).then((result) => {
         if (result.isConfirmed) {
-          this.nomencladoresService.deleteTipoOficina(id).subscribe(
+          this.nomencladoresService.deleteProvincia(id).subscribe(
             () => {
               // Eliminar sin recargar la página
-              this.cargartipoOficina();
-              console.log('Tipo de Oficina eliminada exitosamente');
+              this.cargarProvincias();
+              console.log('Provincia eliminado exitosamente');
             },
             // (error) => {
             //   console.error(error);
