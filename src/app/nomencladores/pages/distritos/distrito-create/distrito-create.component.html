@@ -27,7 +27,7 @@
                 <mat-form-field class="example-form-field">
                     <mat-label>Municipio</mat-label>
                     <mat-select formControlName="municipio_id" required>
-                      <mat-option *ngFor="let municipio of municipios" [value]="municipio.id">{{ municipio.nombre }}</mat-option>
+                      <mat-option *ngFor="let municipio of municipios" [value]="municipio.id">{{ municipio.id }}</mat-option>
                     </mat-select>
                   </mat-form-field>
               </div>

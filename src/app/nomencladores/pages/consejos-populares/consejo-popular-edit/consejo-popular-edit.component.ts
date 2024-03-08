@@ -44,7 +44,7 @@ export class ConsejoPopularEditComponent {
           nombre: cpopulares.nombre,
           occm: cpopulares.occm,
           municipio_id: cpopulares.municipio_id.id,
-          distrito_id: cpopulares.distrito_id.id,
+          distrito_id:cpopulares.distrito_id.id,
           activo: cpopulares.activo
          });
       });

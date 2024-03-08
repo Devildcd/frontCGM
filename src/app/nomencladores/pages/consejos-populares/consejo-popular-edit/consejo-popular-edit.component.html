@@ -15,38 +15,37 @@
     <div *ngIf="!loading" class="card-body flex-grow-1">
         <form [formGroup]="formEditar">
 
-          <div class="example-inline-container">
-            <mat-form-field class="example-form-field">
-              <mat-label>Identificador</mat-label>
-              <input matInput formControlName="id_cpopular" required>
-            </mat-form-field>
-          
-            <mat-form-field class="example-form-field">
-              <mat-label>Nombre</mat-label>
-              <input matInput formControlName="nombre" required>
-            </mat-form-field>
-            </div>
-
-            <!-- <mat-form-field class="example-form-field">
-              <mat-label>OCCM</mat-label>
-              <input matInput formControlName="occm" >
-            </mat-form-field> -->
-            
             <div class="example-inline-container">
-            <mat-form-field class="example-form-field">
-                <mat-label>Municipio</mat-label>
-                <mat-select formControlName="municipio_id" required>
-                  <mat-option *ngFor="let municipio of municipios" [value]="municipio.id">{{ municipio.nombre }}</mat-option>
-                </mat-select>
-              </mat-form-field>
+                <mat-form-field class="example-form-field">
+                  <mat-label>Identificador</mat-label>
+                  <input matInput formControlName="id_cpopular" required>
+                </mat-form-field>
+              
+                <mat-form-field class="example-form-field">
+                  <mat-label>Nombre</mat-label>
+                  <input matInput formControlName="nombre" required>
+                </mat-form-field>
 
-            <mat-form-field class="example-form-field">
-                <mat-label>Distritos</mat-label>
-                <mat-select formControlName="distrito_id" required>
-                  <mat-option *ngFor="let distrito of distritos" [value]="distrito.id">{{ distrito.nombre }}</mat-option>
-                </mat-select>
-              </mat-form-field>
-          </div>
+                <!-- <mat-form-field class="example-form-field">
+                    <mat-label>OCCM</mat-label>
+                    <input matInput formControlName="occm" >
+                  </mat-form-field> -->
+
+                <mat-form-field class="example-full-width">
+                    <mat-label>Municipios</mat-label>
+                    <mat-select formControlName="municipio_id" required>
+                      <mat-option *ngFor="let municipio of municipios" [value]="municipio.id">{{ municipio.nombre }}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width">
+                    <mat-label>Distritos</mat-label>
+                    <mat-select formControlName="distrito_id" required>
+                      <mat-option *ngFor="let distrito of distritos" [value]="distrito.id">{{ distrito.nombre }}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+              </div>
 
               <div class="example-button-container">
                 <!-- Agrega tus botones aquí -->

@@ -38,11 +38,10 @@ export class MunicipioEditComponent {
         console.log(  this.municipio );
 
         this.formEditar.patchValue({ 
-          id_municipio: municipio.id_municipio,
-          nombre: municipio.nombre,
-          activo: municipio.activo,
-          provincia_id: municipio.provincia_id.id
-         });
+          id_municipio:municipio.id_municipio,
+          nombre : municipio.nombre,
+          provincia_id : municipio.provincia_id.id,
+          activo : municipio.activo, });
       });
       this.nomencladoresService.getProvincias().subscribe(
         (provincias)=>{

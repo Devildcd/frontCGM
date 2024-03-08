@@ -24,6 +24,8 @@
       </div>
   
         <div class="card-body flex-grow-1" style="margin-top: -20px;">
+
+          
           
           <div class="row mt-3">
             <div class="col-md-8">
@@ -48,7 +50,7 @@
               <span class="visually-hidden">Loading...</span>
           </div>
 
-            <table *ngIf="!loading" mat-table [dataSource]="dataSource" class="mat-elevation-z8 custom-table">
+            <table  *ngIf="!loading" mat-table [dataSource]="dataSource" class="mat-elevation-z8 custom-table" >
    
               <ng-container matColumnDef="select">
                 <th mat-header-cell *matHeaderCellDef class="custom-header">
@@ -88,8 +90,8 @@
                 <th mat-header-cell *matHeaderCellDef><strong>Acciones</strong></th>
                 <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let element">
                   <div class="d-flex">
-                    <button mat-mini-fab color="primary" style="margin-right: 5px;">
-                      <i class="fa fa-edit" [routerLink]="['/nomencladores/divisiones/editar/provincia', element.id]" aria-hidden="true"></i>
+                    <button [routerLink]="['/nomencladores/divisiones/editar/provincia', element.id]" mat-mini-fab color="primary" style="margin-right: 5px;">
+                      <i class="fa fa-edit"  aria-hidden="true"></i>
                      </button>
                      <button mat-mini-fab (click)="eliminarProvincia(element.id)" color="warn">
                         <i class="fa fa-trash" aria-hidden="true"></i>

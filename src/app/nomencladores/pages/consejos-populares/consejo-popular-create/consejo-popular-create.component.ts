@@ -14,7 +14,7 @@ import Swal from 'sweetalert2';
 })
 export class ConsejoPopularCreateComponent {
 
-  cpopular!: ConsejoPopular;
+  cpopulares!: ConsejoPopular;
   municipios!:Municipio[];
   distritos!:Distrito[]
 
@@ -58,12 +58,12 @@ export class ConsejoPopularCreateComponent {
       return;
     }
 
-    this.cpopular = {
+    this.cpopulares = {
       ...this.formCrear.value,
     };
-    this.nomencladoresService.postConsejoPopular(this.cpopular).subscribe(
+    this.nomencladoresService.postConsejoPopular(this.cpopulares).subscribe(
       (consejoPopularCreada) => {
-        this.cpopular = consejoPopularCreada;
+        this.cpopulares = consejoPopularCreada;
         Swal.fire({
           icon: 'success',
           title: '¡Éxito!',
@@ -72,7 +72,7 @@ export class ConsejoPopularCreateComponent {
           timer: 1000,
         });
         setTimeout(() => {
-          this.router.navigate(['/nomencladores/divisiones/detalles/consejo-popular/', this.cpopular.id]);
+          this.router.navigate(['/nomencladores/lista/cpopular/', this.cpopulares.id]);
         }, 1000);
       }
       // error => {

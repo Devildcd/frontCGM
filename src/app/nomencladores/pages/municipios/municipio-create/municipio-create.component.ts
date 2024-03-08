@@ -54,6 +54,7 @@ export class MunicipioCreateComponent {
     this.municipio = {
       ...this.formCrear.value,
     };
+
     this.nomencladoresService.postMunicipio(this.municipio).subscribe(
       (municipioCreada) => {
         this.municipio = municipioCreada;

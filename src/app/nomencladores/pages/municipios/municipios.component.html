@@ -6,7 +6,7 @@
         <div class="row">
           <div class="col-md-8">
              
-              <h2 style="color: rgb(95, 95, 95);">Municipios</h2>
+              <h2 style="color: rgb(95, 95, 95);">Municipio</h2>
           </div>
           
           <div class="row justify-content-end">
@@ -95,8 +95,8 @@
                 <th mat-header-cell *matHeaderCellDef><strong>Acciones</strong></th>
                 <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let element">
                   <div class="d-flex">
-                    <button mat-mini-fab color="primary" style="margin-right: 5px;">
-                      <i class="fa fa-edit" [routerLink]="['/nomencladores/divisiones/editar/municipio', element.id]" aria-hidden="true"></i>
+                    <button [routerLink]="['/nomencladores/divisiones/editar/municipio', element.id]" mat-mini-fab color="primary" style="margin-right: 5px;">
+                      <i class="fa fa-edit"  aria-hidden="true"></i>
                      </button>
                      <button mat-mini-fab (click)="eliminarMunicipio(element.id)" color="warn">
                         <i class="fa fa-trash" aria-hidden="true"></i>
@@ -131,3 +131,4 @@
         </div>
     </div>
   </div> 
+

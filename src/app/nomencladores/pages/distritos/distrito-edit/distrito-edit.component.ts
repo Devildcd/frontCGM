@@ -42,7 +42,7 @@ export class DistritoEditComponent {
           nombre: distrito.nombre,
           activo: distrito.activo,
           municipio_id: distrito.municipio_id.id
-         });
+        });
       });
 
       this.nomencladoresService.getMunicipios().subscribe(

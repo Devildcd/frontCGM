@@ -28,7 +28,12 @@ export class DistritoShowComponent {
         this.loading = false;
         console.log(distrito);
 
-        this.formEditar.patchValue({ ...distrito });
+        this.formEditar.patchValue({ 
+            id_distrito: distrito.id_distrito,
+            nombre: distrito.nombre,
+            activo: distrito.activo,
+            municipio_id: distrito.municipio_id.nombre    
+         });
       });
   }
 

@@ -93,8 +93,8 @@
                 <th mat-header-cell *matHeaderCellDef><strong>Acciones</strong></th>
                 <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let distrito">
                   <div class="d-flex">
-                    <button mat-mini-fab color="primary" style="margin-right: 5px;">
-                      <i class="fa fa-edit" [routerLink]="['/nomencladores/divisiones/editar/distrito', distrito.id]" aria-hidden="true"></i>
+                    <button [routerLink]="['/nomencladores/divisiones/editar/distrito', distrito.id]" mat-mini-fab color="primary" style="margin-right: 5px;">
+                      <i class="fa fa-edit"  aria-hidden="true"></i>
                      </button>
                      <button mat-mini-fab (click)="eliminarDistrito(distrito.id)" color="warn">
                         <i class="fa fa-trash" aria-hidden="true"></i>
