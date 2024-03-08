@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ConsejoPopular } from 'src/app/nomencladores/interfaces/consejo-popular.interface';
 import { Distrito } from 'src/app/nomencladores/interfaces/distritos.interface';
 import { Municipio } from 'src/app/nomencladores/interfaces/municipio.interfaces';
+import { OCCM } from 'src/app/nomencladores/interfaces/occm.interface';
 import { NomencladoresService } from 'src/app/nomencladores/services/nomencladores.service';
 import Swal from 'sweetalert2';
 
@@ -16,6 +17,7 @@ export class ConsejoPopularCreateComponent {
 
   cpopular!: ConsejoPopular;
   municipios!:Municipio[];
+  occms!: OCCM[];
   distritos!:Distrito[]
 
   constructor(
@@ -33,6 +35,11 @@ export class ConsejoPopularCreateComponent {
     this.nomencladoresService.getDistritos().subscribe(
       (distritos)=>{
         this.distritos = distritos
+      }
+    )
+    this.nomencladoresService.getOCCMS().subscribe(
+      (occms)=>{
+        this.occms = occms
       }
     )
   }

@@ -16,7 +16,7 @@ import Swal from 'sweetalert2';
 export class ConsejosPopularesComponent {
 
   cpopulares: ConsejoPopular[] = [];
-  displayedColumns: string[] = ['select', 'id_cpopular', 'nombre', 'municipio_id', 'distrito_id', 'actions'];
+  displayedColumns: string[] = ['select', 'id_cpopular', 'nombre', 'occm', 'municipio_id', 'distrito_id', 'actions'];
   // displayedColumns: string[] = ['select', 'id_cpopular', 'nombre', 'occm', 'municipio_id', 'distrito_id', 'actions'];
   dataSource = new MatTableDataSource<ConsejoPopular>([]);
   selection = new SelectionModel<ConsejoPopular>(true, []);
@@ -24,7 +24,7 @@ export class ConsejosPopularesComponent {
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  constructor( private nomencladoresService: NomencladoresService, private router: Router ) {}
+  constructor(private nomencladoresService: NomencladoresService, private router: Router) { }
 
   ngOnInit() {
     this.cargarConsejoPopular();
@@ -63,24 +63,24 @@ export class ConsejosPopularesComponent {
       });
   }
 
-   /** Whether the number of selected elements matches the total number of rows. */
-   isAllSelected() {
+  /** Whether the number of selected elements matches the total number of rows. */
+  isAllSelected() {
     const numSelected = this.selection.selected.length;
     const numRows = this.dataSource.data.length;
     return numSelected === numRows;
   }
 
-    /** Selects all rows if they are not all selected; otherwise clear selection. */
-    toggleAllRows() {
-      if (this.isAllSelected()) {
-        this.selection.clear();
-        return;
-      }
-  
-      this.selection.select(...this.dataSource.data);
+  /** Selects all rows if they are not all selected; otherwise clear selection. */
+  toggleAllRows() {
+    if (this.isAllSelected()) {
+      this.selection.clear();
+      return;
     }
 
-      /** The label for the checkbox on the passed row */
+    this.selection.select(...this.dataSource.data);
+  }
+
+  /** The label for the checkbox on the passed row */
   checkboxLabel(row?: ConsejoPopular): string {
     if (!row) {
       return `${this.isAllSelected() ? 'deselect' : 'select'} all`;

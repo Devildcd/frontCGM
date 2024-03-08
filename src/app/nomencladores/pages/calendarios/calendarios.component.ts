@@ -1,60 +1,65 @@
 import { Component, ViewChild } from '@angular/core';
-import { Distrito } from '../../interfaces/distritos.interface';
-import { Provincia } from '../../interfaces/provincia.interface';
-import { Municipio } from '../../interfaces/municipio.interfaces';
+import { Calendario } from '../../interfaces/calendario.interface';
 import { MatTableDataSource } from '@angular/material/table';
 import { SelectionModel } from '@angular/cdk/collections';
-import { OCCM } from '../../interfaces/occm.interface';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { NomencladoresService } from '../../services/nomencladores.service';
 import { Router } from '@angular/router';
+import { catchError, throwError } from 'rxjs';
 import Swal from 'sweetalert2';
-import { tipoOficina } from '../../interfaces/tipo-oficina.interface';
 
 @Component({
-  selector: 'app-occm',
-  templateUrl: './occm.component.html',
-  styleUrls: ['./occm.component.css']
+  selector: 'app-calendarios',
+  templateUrl: './calendarios.component.html',
+  styleUrls: ['./calendarios.component.css']
 })
-export class OccmComponent {
+export class CalendariosComponent {
 
-  occm: OCCM[] = [];
-  displayedColumns: string[] = [
-    'select',
-    'id_occm',
-    'nit',
-    'descripcion',
-    'direccion',
-    'telefono',
-    'provincia_id',
-    'municipio_id',
-    'distrito_id',
-    'tipo_oficina_id',
-    //'padre_id',
-    'actions'];
-  dataSource = new MatTableDataSource<OCCM>([]);
-  selection = new SelectionModel<OCCM>(true, []);
+  calendarios: Calendario[] = [];
+  displayedColumns: string[] = ['select', 'descripcion', 'actions'];
+  dataSource = new MatTableDataSource<Calendario>([]);
+  selection = new SelectionModel<Calendario>(true, []);
   loading = true;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  constructor(private nomencladoresService: NomencladoresService, private router: Router) { }
+  constructor( private nomencladoresService: NomencladoresService, private router: Router ) {}
 
   ngOnInit() {
-    this.cargarOCCM();
+    this.cargarCalendarios();
   }
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
   }
 
-  cargarOCCM() {
-    this.nomencladoresService.getOCCMS().subscribe((occm) => {
-      this.occm = occm;
-      this.dataSource.data = occm;
-      console.log(this.occm);
-      this.loading = false;
-    });
+  cargarCalendarios() {
+    this.nomencladoresService
+      .getCalendarios()
+      .pipe(
+        catchError((error) => {
+          console.log('Error:', error);
+          // if (error.error.message === 'Unauthenticated.') {
+          //   Swal.fire({
+          //     icon: 'error',
+          //     title: '¡Tu sesión ha expirado!',
+          //     text: 'Por favor, vuelve a iniciar sesión',
+          //     showConfirmButton: false,
+          //     timer: 1000, // Duración en milisegundos (1 segundo)
+          //   }).then(() => {
+          //     this.router.navigateByUrl('/auth/login');
+          //   });
+          // }
+          return throwError('Ha ocurrido un error en la API');
+        })
+      )
+      .subscribe((calendarios) => {
+        this.calendarios = calendarios;
+        this.dataSource.data = calendarios;
+        console.log(this.calendarios);
+        this.loading = false;
+        // console.log(this.token);
+      });
   }
 
   /** Whether the number of selected elements matches the total number of rows. */
@@ -75,11 +80,11 @@ export class OccmComponent {
   }
 
   /** The label for the checkbox on the passed row */
-  checkboxLabel(row?: OCCM): string {
+  checkboxLabel(row?: Calendario): string {
     if (!row) {
       return `${this.isAllSelected() ? 'deselect' : 'select'} all`;
     }
-    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.id_occm + 1}`;
+    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.descripcion + 1}`;
   }
 
   length = 50;
@@ -107,7 +112,7 @@ export class OccmComponent {
     }
   }
 
-  eliminarOCCM(id: number) {
+  eliminarCalendario(id: number) {
     if (id !== undefined) {
       Swal.fire({
         title: '¿Estás seguro?',
@@ -120,15 +125,11 @@ export class OccmComponent {
         cancelButtonText: 'Cancelar',
       }).then((result) => {
         if (result.isConfirmed) {
-          this.nomencladoresService.deleteOCCM(id).subscribe(
+          this.nomencladoresService.deleteCalendario(id).subscribe(
             () => {
               // Eliminar sin recargar la página
-              const index = this.occm.findIndex((occm) => occm.id === id);
-              if (index !== -1) {
-                this.occm.splice(index, 1);
-              }
-              this.cargarOCCM();
-              console.log('OCCM eliminado exitosamente');
+              this.cargarCalendarios();
+              console.log('Calendario eliminado exitosamente');
             },
             // (error) => {
             //   console.error(error);
@@ -149,5 +150,4 @@ export class OccmComponent {
       });
     }
   }
-
 }

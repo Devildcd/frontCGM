@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Distrito } from 'src/app/nomencladores/interfaces/distritos.interface';
 import { Municipio } from 'src/app/nomencladores/interfaces/municipio.interfaces';
-import { Provincia } from 'src/app/nomencladores/interfaces/provincia.interface';
+import { OCCM } from 'src/app/nomencladores/interfaces/occm.interface';
 import { NomencladoresService } from 'src/app/nomencladores/services/nomencladores.service';
 import Swal from 'sweetalert2';
 
@@ -15,6 +15,7 @@ import Swal from 'sweetalert2';
 export class DistritoCreateComponent {
 
   distrito!: Distrito;
+  occms!: OCCM[];
   municipios: Municipio[] = [];
   submitted = false;
 
@@ -26,6 +27,11 @@ export class DistritoCreateComponent {
 
   ngOnInit() {
 
+    this.nomencladoresService.getOCCMS().subscribe(
+      (occms)=>{
+        this.occms = occms
+      }
+    )
     this.nomencladoresService.getMunicipios().subscribe(
       ( municipios ) => {
         this.municipios = municipios;
@@ -36,8 +42,9 @@ export class DistritoCreateComponent {
   formCrear: FormGroup = this.fb.group({
     id_distrito: ['', Validators.required],
     nombre: ['', Validators.required],
-    activo: [true],
-    municipio_id: [0, Validators.required]
+    occm: [''],
+    municipio_id: [0, Validators.required],
+    activo: [true]
   });
 
   crearDistrito() {

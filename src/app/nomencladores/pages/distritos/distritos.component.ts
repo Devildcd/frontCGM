@@ -7,6 +7,7 @@ import Swal from 'sweetalert2';
 import { Distrito } from '../../interfaces/distritos.interface';
 
 import { NomencladoresService } from '../../services/nomencladores.service';
+import { catchError, throwError } from 'rxjs';
 
 @Component({
   selector: 'app-distritos',
@@ -16,14 +17,14 @@ import { NomencladoresService } from '../../services/nomencladores.service';
 export class DistritosComponent {
 
   distritos: Distrito[] = [];
-  displayedColumns: string[] = ['select', 'id_distrito', 'nombre', 'municipio_id', 'actions'];
+  displayedColumns: string[] = ['select', 'id_distrito', 'nombre', 'occm', 'municipio_id', 'actions'];
   dataSource = new MatTableDataSource<Distrito>([]);
   selection = new SelectionModel<Distrito>(true, []);
   loading = true;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  constructor( private nomencladoresService: NomencladoresService, private router: Router ) {}
+  constructor(private nomencladoresService: NomencladoresService, private router: Router) { }
 
   ngOnInit() {
     this.cargarDistritos();
@@ -34,29 +35,34 @@ export class DistritosComponent {
   }
 
   cargarDistritos() {
-    this.nomencladoresService.getDistritos().subscribe(
-      (distritos) => {
+    this.nomencladoresService
+      .getDistritos()
+      .pipe(
+        catchError((error) => {
+          console.log('Error:', error);
+          // if (error.error.message === 'Unauthenticated.') {
+          //   Swal.fire({
+          //     icon: 'error',
+          //     title: '¡Tu sesión ha expirado!',
+          //     text: 'Por favor, vuelve a iniciar sesión',
+          //     showConfirmButton: false,
+          //     timer: 1000, // Duración en milisegundos (1 segundo)
+          //   }).then(() => {
+          //     this.router.navigateByUrl('/auth/login');
+          //   });
+          // }
+          return throwError('Ha ocurrido un error en la API');
+        })
+      )
+      .subscribe((distritos) => {
         this.distritos = distritos;
         this.dataSource.data = distritos;
         console.log(this.distritos);
         this.loading = false;
-      },
-      // (error) => {
-      //   console.log('Error:', error);
-      //   if (error.error && error.error.message === 'Unauthenticated.') {
-      //     Swal.fire({
-      //       icon: 'error',
-      //       title: '¡Tu sesión ha expirado!',
-      //       text: 'Por favor, vuelve a iniciar sesión',
-      //       showConfirmButton: false,
-      //       timer: 1000 // Duración en milisegundos (1 segundo)
-      //     }).then(() => {
-      //       this.router.navigateByUrl('/auth/login');
-      //     });
-      //   }
-      // }
-    );
+        // console.log(this.token);
+      });
   }
+
 
   /** Whether the number of selected elements matches the total number of rows. */
   isAllSelected() {

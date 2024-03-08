@@ -69,12 +69,17 @@
 
               <ng-container matColumnDef="id_cpopular">
                 <th mat-header-cell *matHeaderCellDef><strong> Identificador </strong></th>
-                <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let cpopular"> {{cpopular.id_cpopular}} </td>
+                <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let cpopular"> <a [routerLink]="['/nomencladores/divisiones/detalles/consejo-popular/', cpopular.id]" class="link-estilizado">{{cpopular.id_cpopular}} </a> </td>
               </ng-container>
                       
               <ng-container matColumnDef="nombre">
                 <th mat-header-cell *matHeaderCellDef><strong> Nombre </strong></th>
                 <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let cpopular"> <a [routerLink]="['/nomencladores/divisiones/detalles/consejo-popular/', cpopular.id]" class="link-estilizado">{{cpopular.nombre}} </a> </td>
+              </ng-container>
+
+              <ng-container matColumnDef="occm">
+                <th mat-header-cell *matHeaderCellDef><strong> OCCM </strong></th>
+                <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let cpopular"> <a [routerLink]="['/nomencladores/divisiones/detalles/consejo-popular/', cpopular.id]" class="link-estilizado">{{cpopular.occm?.id_occm}} </a> </td>
               </ng-container>
             
               <!-- <ng-container matColumnDef="activo">
@@ -89,18 +94,14 @@
 
               <ng-container matColumnDef="municipio_id">
                 <th mat-header-cell *matHeaderCellDef><strong> Municipio </strong></th>
-                <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let cpopular"> {{cpopular.municipio_id.nombre}} </td>
+                <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let cpopular"> <a [routerLink]="['/nomencladores/divisiones/detalles/consejo-popular/', cpopular.id]" class="link-estilizado">{{cpopular.municipio_id.nombre}} </a> </td>
               </ng-container>
 
               <ng-container matColumnDef="distrito_id">
                 <th mat-header-cell *matHeaderCellDef><strong> Distrito </strong></th>
-                <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let cpopular"> {{cpopular.distrito_id.nombre}} </td>
+                <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let cpopular"> <a [routerLink]="['/nomencladores/divisiones/detalles/consejo-popular/', cpopular.id]" class="link-estilizado">{{cpopular.distrito_id.nombre}} </a> </td>
               </ng-container>
 
-              
-
-
-  
               <ng-container matColumnDef="actions">
                 <th mat-header-cell *matHeaderCellDef><strong>Acciones</strong></th>
                 <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let element">

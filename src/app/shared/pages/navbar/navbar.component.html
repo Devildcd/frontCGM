@@ -34,6 +34,8 @@
       <button mat-menu-item [routerLink]="['/nomencladores/divisiones/occm']">OCCM </button>
       <button mat-menu-item [routerLink]="['/nomencladores/divisiones/organismos']">Organismos</button>
       <button mat-menu-item [routerLink]="['/nomencladores/divisiones/zonas']">Zonas</button>
+      
+
     </mat-menu>
   
     <mat-menu #tipos="matMenu">
@@ -43,7 +45,7 @@
       <button mat-menu-item [routerLink]="['/nomencladores/divisiones/tipos-oficinas']">Tipos de Oficinas</button>
       <button mat-menu-item>Tipos de Operaciones</button>
       <button mat-menu-item>Tipos de Ajuste</button>
-      <button mat-menu-item>Tipos de Calendarios</button>
+      <button mat-menu-item [routerLink]="['/nomencladores/divisiones/calendarios']">Tipos de Calendarios</button>
     </mat-menu>
   
     <mat-menu #conceptos="matMenu">

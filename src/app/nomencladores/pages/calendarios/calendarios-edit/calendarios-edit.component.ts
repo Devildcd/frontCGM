@@ -2,22 +2,18 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { switchMap } from 'rxjs';
-import { Distrito } from 'src/app/nomencladores/interfaces/distritos.interface';
-import { Municipio } from 'src/app/nomencladores/interfaces/municipio.interfaces';
-import { OCCM } from 'src/app/nomencladores/interfaces/occm.interface';
+import { Calendario } from 'src/app/nomencladores/interfaces/calendario.interface';
 import { NomencladoresService } from 'src/app/nomencladores/services/nomencladores.service';
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-distrito-edit',
-  templateUrl: './distrito-edit.component.html',
-  styleUrls: ['./distrito-edit.component.css']
+  selector: 'app-calendarios-edit',
+  templateUrl: './calendarios-edit.component.html',
+  styleUrls: ['./calendarios-edit.component.css']
 })
-export class DistritoEditComponent {
+export class CalendariosEditComponent {
 
-  distrito!: Distrito;
-  occms: OCCM[] = [];
-  municipios: Municipio[] = [];
+  calendario!: Calendario;
   submitted = false;
   loading = true;
 
@@ -32,44 +28,23 @@ export class DistritoEditComponent {
 
     this.activeRoute.params
       .pipe(
-        switchMap(({ id }) => this.nomencladoresService.getDistrito( id ))
+        switchMap(({ id }) => this.nomencladoresService.getCalendario( id ))
       )
-      .subscribe((distrito) => {
-        this.distrito = distrito;
+      .subscribe((calendario) => {
+        this.calendario = calendario;
         this.loading = false;
-        console.log( distrito );
+        console.log( calendario );
 
-        this.formEditar.patchValue({ 
-          id_distrito: distrito.id_distrito,
-          nombre: distrito.nombre,
-          occm: distrito.occm?.id,
-          municipio_id: distrito.municipio_id.id,
-          activo: distrito.activo,
-          
-         });
+        this.formEditar.patchValue({ ...calendario });
       });
-      this.nomencladoresService.getOCCMS().subscribe(
-        (occms)=>{
-          this.occms = occms
-        }
-      )
-      this.nomencladoresService.getMunicipios().subscribe(
-        ( municipios ) => {
-          this.municipios = municipios;
-        }
-      )
   }
 
   formEditar: FormGroup = this.fb.group({
-    id_distrito: ['', Validators.required],
-    nombre: ['', Validators.required],
-    occm: [],
-    municipio_id: ['', Validators.required],
+    descripcion: ['', Validators.required],
     activo: [true],
- 
   });
 
-  editarDistrito() {
+  editarCalendario() {
 
     if ( this.formEditar.untouched ) {
       // El formulario es inválido o no se ha tocado
@@ -82,19 +57,19 @@ export class DistritoEditComponent {
       return;
     }
 
-    const distrito = this.formEditar.value;
-    this.nomencladoresService.putDistrito( this.distrito.id!, distrito ).subscribe(
-      (distrito) => {
+    const calendario = this.formEditar.value;
+    this.nomencladoresService.putCalendario( this.calendario.id!, calendario ).subscribe(
+      (calendario) => {
         Swal.fire({
           icon: 'success',
           title: '¡Éxito!',
-          text: 'Distrito actualizado',
+          text: 'Calendario actualizado',
           showConfirmButton: false,
         });
         setTimeout(() => {
           location.reload();
         }, 1000);
-        this.router.navigate(['/nomencladores/divisiones/distritos']);
+        this.router.navigate(['/nomencladores/divisiones/calendarios']);
       }
       // error => {
       //   console.log('Error:', error);

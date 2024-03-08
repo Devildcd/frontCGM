@@ -43,6 +43,10 @@ import { ZonasComponent } from './pages/zonas/zonas.component';
 import { ZonaShowComponent } from './pages/zonas/zona-show/zona-show.component';
 import { ZonaEditComponent } from './pages/zonas/zona-edit/zona-edit.component';
 import { ZonaCreateComponent } from './pages/zonas/zona-create/zona-create.component';
+import { CalendariosComponent } from './pages/calendarios/calendarios.component';
+import { CalendariosCreateComponent } from './pages/calendarios/calendarios-create/calendarios-create.component';
+import { CalendariosEditComponent } from './pages/calendarios/calendarios-edit/calendarios-edit.component';
+import { CalendariosShowComponent } from './pages/calendarios/calendarios-show/calendarios-show.component';
 
 
 
@@ -85,6 +89,10 @@ import { ZonaCreateComponent } from './pages/zonas/zona-create/zona-create.compo
     ZonaShowComponent,
     ZonaEditComponent,
     ZonaCreateComponent,
+    CalendariosComponent,
+    CalendariosCreateComponent,
+    CalendariosEditComponent,
+    CalendariosShowComponent,
   
   ],
   imports: [
