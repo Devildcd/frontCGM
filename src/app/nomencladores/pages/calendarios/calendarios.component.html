@@ -6,7 +6,7 @@
         <div class="row">
           <div class="col-md-8">
              
-              <h2 style="color: rgb(95, 95, 95);">Provincias</h2>
+              <h2 style="color: rgb(95, 95, 95);">Calendarios</h2>
           </div>
           
           <div class="row justify-content-end">
@@ -28,7 +28,7 @@
           <div class="row mt-3">
             <div class="col-md-8">
               <div class="button-pers">
-                <button mat-raised-button color="primary" [routerLink]="['/nomencladores/divisiones/crear/provincia']">Crear</button>
+                <button mat-raised-button color="primary" [routerLink]="['/nomencladores/divisiones/crear/calendario']">Crear</button>
                 <button mat-raised-button color="secundary" style="margin-left: 5px;">Importar</button>
               </div>
             </div>
@@ -68,15 +68,9 @@
               </ng-container> 
           
               
-              <ng-container matColumnDef="id_provincia">
-                <th mat-header-cell *matHeaderCellDef><strong> Identificador </strong></th>
-                <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let provincia"> <a [routerLink]="['/nomencladores/divisiones/detalles/provincia/', provincia.id]" class="link-estilizado">{{provincia.id_provincia}} </a> </td>
-              </ng-container>
-            
-              
-              <ng-container matColumnDef="nombre">
-                <th mat-header-cell *matHeaderCellDef><strong> Nombre </strong></th>
-                <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let provincia"> <a [routerLink]="['/nomencladores/divisiones/detalles/provincia/', provincia.id]" class="link-estilizado">{{provincia.nombre}} </a> </td>
+              <ng-container matColumnDef="descripcion">
+                <th mat-header-cell *matHeaderCellDef><strong> Descripción </strong></th>
+                <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let calendario"> <a [routerLink]="['/nomencladores/divisiones/detalles/calendario/', calendario.id]" class="link-estilizado">{{calendario.descripcion}} </a> </td>
               </ng-container>
             
               <!-- <ng-container matColumnDef="activo">
@@ -88,10 +82,10 @@
                 <th mat-header-cell *matHeaderCellDef><strong>Acciones</strong></th>
                 <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let element">
                   <div class="d-flex">
-                    <button [routerLink]="['/nomencladores/divisiones/editar/provincia', element.id]" mat-mini-fab color="primary" style="margin-right: 5px;">
-                      <i class="fa fa-edit" aria-hidden="true"></i>
-                     </button>
-                     <button mat-mini-fab (click)="eliminarProvincia(element.id)" color="warn">
+                    <button  [routerLink]="['/nomencladores/divisiones/editar/calendario',element.id]" mat-mini-fab color="primary" style="margin-right: 5px;">
+                        <i class="fa fa-edit" aria-hidden="true"></i>
+                    </button>
+                     <button mat-mini-fab (click)="eliminarCalendario(element.id)" color="warn">
                         <i class="fa fa-trash" aria-hidden="true"></i>
                      </button>
                   </div>
@@ -123,3 +117,4 @@
         </div>
     </div>
   </div> 
+

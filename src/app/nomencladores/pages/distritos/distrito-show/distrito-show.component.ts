@@ -28,11 +28,14 @@ export class DistritoShowComponent {
         this.loading = false;
         console.log(distrito);
 
+        //this.formEditar.patchValue({ ...distrito });
         this.formEditar.patchValue({ 
-            id_distrito: distrito.id_distrito,
-            nombre: distrito.nombre,
-            activo: distrito.activo,
-            municipio_id: distrito.municipio_id.nombre    
+          id_distrito: distrito.id_distrito,
+          nombre: distrito.nombre,
+          occm: distrito.occm?.id_occm,
+          municipio_id: distrito.municipio_id.nombre,
+          activo: distrito.activo
+          
          });
       });
   }
@@ -40,7 +43,9 @@ export class DistritoShowComponent {
   formEditar: FormGroup = this.fb.group({
     id_distrito: [''],
     nombre: [''],
+    occm: [],
+    municipio_id: [],
     activo: [true],
-    municipio_id: [0]
+   
   });
 }

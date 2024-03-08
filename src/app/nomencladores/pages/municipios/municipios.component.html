@@ -6,7 +6,7 @@
         <div class="row">
           <div class="col-md-8">
              
-              <h2 style="color: rgb(95, 95, 95);">Municipio</h2>
+              <h2 style="color: rgb(95, 95, 95);">Municipios</h2>
           </div>
           
           <div class="row justify-content-end">
@@ -71,7 +71,7 @@
               
               <ng-container matColumnDef="id_municipio">
                 <th mat-header-cell *matHeaderCellDef><strong> Identificador </strong></th>
-                <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let municipio"> {{municipio.id_municipio}} </td>
+                <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let municipio"> <a [routerLink]="['/nomencladores/divisiones/detalles/municipio/', municipio.id]" class="link-estilizado"> {{municipio.id_municipio}} </a> </td>
               </ng-container>
             
               
@@ -83,7 +83,7 @@
 
               <ng-container matColumnDef="provincia_id">
                 <th mat-header-cell *matHeaderCellDef><strong> Provincia </strong></th>
-                <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let municipio"> {{municipio.provincia_id.nombre}} </td>
+                <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let municipio"> <a [routerLink]="['/nomencladores/divisiones/detalles/municipio/', municipio.id]" class="link-estilizado">{{municipio.provincia_id.nombre}} </a> </td>
               </ng-container>
             
               <!-- <ng-container matColumnDef="activo">
@@ -95,8 +95,8 @@
                 <th mat-header-cell *matHeaderCellDef><strong>Acciones</strong></th>
                 <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let element">
                   <div class="d-flex">
-                    <button [routerLink]="['/nomencladores/divisiones/editar/municipio', element.id]" mat-mini-fab color="primary" style="margin-right: 5px;">
-                      <i class="fa fa-edit"  aria-hidden="true"></i>
+                    <button  [routerLink]="['/nomencladores/divisiones/editar/municipio', element.id]" mat-mini-fab color="primary" style="margin-right: 5px;">
+                      <i class="fa fa-edit" aria-hidden="true"></i>
                      </button>
                      <button mat-mini-fab (click)="eliminarMunicipio(element.id)" color="warn">
                         <i class="fa fa-trash" aria-hidden="true"></i>
@@ -131,4 +131,3 @@
         </div>
     </div>
   </div> 
-

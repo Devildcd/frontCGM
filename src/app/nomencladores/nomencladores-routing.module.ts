@@ -40,6 +40,10 @@ import { ZonaCreateComponent } from './pages/zonas/zona-create/zona-create.compo
 import { ZonaEditComponent } from './pages/zonas/zona-edit/zona-edit.component';
 import { ZonaShowComponent } from './pages/zonas/zona-show/zona-show.component';
 import { ZonasComponent } from './pages/zonas/zonas.component';
+import { CalendariosComponent } from './pages/calendarios/calendarios.component';
+import { CalendariosCreateComponent } from './pages/calendarios/calendarios-create/calendarios-create.component';
+import { CalendariosShowComponent } from './pages/calendarios/calendarios-show/calendarios-show.component';
+import { CalendariosEditComponent } from './pages/calendarios/calendarios-edit/calendarios-edit.component';
 
 const routes: Routes = [
 
@@ -47,194 +51,237 @@ const routes: Routes = [
     path: '',
     component: HomeComponent,
     children: [
-       
-  //****** Nomencladores******// 
-  // provincias
-  {
-    path:'divisiones/provincias',
-    component: ProvinciasComponent
-  },
-  {
-    path:'divisiones/crear/provincia',
-    component: ProvinciaCreateComponent
-  },
-  {
-    path:'divisiones/editar/provincia/:id',
-    component: ProvinciaEditComponent
-  },
-  {
-    path:'divisiones/detalles/provincia/:id',
-    component: ProvinciaShowComponent
-  },
 
-  // municipios
-  {
-    path:'divisiones/municipios',
-    component: MunicipiosComponent
-  },
-  {
-    path:'divisiones/crear/municipio',
-    component: MunicipioCreateComponent
-  },
-  {
-    path:'divisiones/editar/municipio/:id',
-    component: MunicipioEditComponent
-  },
-  {
-    path: 'divisiones/detalles/municipio/:id',
-    component: MunicipioShowComponent
-  },
+      //****** Nomencladores******// 
+      // provincias
+      {
+        path: 'divisiones/provincias',
+        component: ProvinciasComponent
+      },
+      {
+        path: 'divisiones/crear/provincia',
+        component: ProvinciaCreateComponent
+      },
+      {
+        path: 'divisiones/editar/provincia/:id',
+        component: ProvinciaEditComponent
+      },
+      {
+        path: 'divisiones/detalles/provincia/:id',
+        component: ProvinciaShowComponent
+      },
 
-  // distritos
-  {
-    path:'divisiones/distritos',
-    component: DistritosComponent
-  },
-  {
-    path:'divisiones/crear/distrito',
-    component: DistritoCreateComponent
-  },
-  {
-    path:'divisiones/editar/distrito/:id',
-    component: DistritoEditComponent
-  },
-  {
-    path: 'divisiones/detalles/distrito/:id',
-    component: DistritoShowComponent
-  },
+      // municipios
+      {
+        path: 'divisiones/municipios',
+        component: MunicipiosComponent
+      },
+      {
+        path: 'divisiones/crear/municipio',
+        component: MunicipioCreateComponent
+      },
+      {
+        path: 'divisiones/editar/municipio/:id',
+        component: MunicipioEditComponent
+      },
+      {
+        path: 'divisiones/detalles/municipio/:id',
+        component: MunicipioShowComponent
+      },
 
-  // consejos-populares
-  {
-    path:'divisiones/consejos-populares',
-    component: ConsejosPopularesComponent
-  },
-  {
-    path:'divisiones/crear/consejo-popular',
-    component: ConsejoPopularCreateComponent
-  },
-  {
-    path:'divisiones/editar/consejo-popular/:id',
-    component: ConsejoPopularEditComponent
-  },
-  {
-    path: 'divisiones/detalles/consejo-popular/:id',
-    component: ConsejoPopularShowComponent
-  },
+      // distritos
+      {
+        path: 'divisiones/distritos',
+        component: DistritosComponent
+      },
+      {
+        path: 'divisiones/crear/distrito',
+        component: DistritoCreateComponent
+      },
+      {
+        path: 'divisiones/editar/distrito/:id',
+        component: DistritoEditComponent
+      },
+      {
+        path: 'divisiones/detalles/distrito/:id',
+        component: DistritoShowComponent
+      },
 
-  // calles
-  {
-    path:'divisiones/calles',
-    component: CallesComponent
-  },
-  {
-    path:'divisiones/crear/calle',
-    component: CalleCreateComponent
-  },
-  {
-    path:'divisiones/editar/calle/:id',
-    component: CalleEditComponent
-  },
-  {
-    path:'divisiones/detalles/calle/:id',
-    component: CalleShowComponent
-  },
+      // consejos-populares
+      {
+        path: 'divisiones/consejos-populares',
+        component: ConsejosPopularesComponent
+      },
+      {
+        path: 'divisiones/crear/consejo-popular',
+        component: ConsejoPopularCreateComponent
+      },
+      {
+        path: 'divisiones/editar/consejo-popular/:id',
+        component: ConsejoPopularEditComponent
+      },
+      {
+        path: 'divisiones/detalles/consejo-popular/:id',
+        component: ConsejoPopularShowComponent
+      },
 
-  // tipos-oficinas
-  {
-    path:'divisiones/tipos-oficinas',
-    component: TiposOficinasComponent
-  },
-  {
-    path:'divisiones/crear/tipo-oficina',
-    component: TipoOficinaCreateComponent
-  },
-  {
-    path:'divisiones/editar/tipo-oficina/:id',
-    component: TipoOficinaEditComponent
-  },
-  {
-    path:'divisiones/detalles/tipo-oficina/:id',
-    component: TipoOficinaShowComponent
-  },
+      // calles
+      {
+        path: 'divisiones/calles',
+        component: CallesComponent
+      },
+      {
+        path: 'divisiones/crear/calle',
+        component: CalleCreateComponent
+      },
+      {
+        path: 'divisiones/editar/calle/:id',
+        component: CalleEditComponent
+      },
+      {
+        path: 'divisiones/detalles/calle/:id',
+        component: CalleShowComponent
+      },
 
-  // occm
-  {
-    path:'divisiones/occm',
-    component: OccmComponent
-  },
-  {
-    path:'divisiones/crear/occm',
-    component: OccmCreateComponent
-  },
-  {
-    path:'divisiones/editar/occm/:id',
-    component: OccmEditComponent
-  },
-  {
-    path:'divisiones/detalles/occm/:id',
-    component: OccmShowComponent
-  },
+      // tipos-oficinas
+      {
+        path: 'divisiones/tipos-oficinas',
+        component: TiposOficinasComponent
+      },
+      {
+        path: 'divisiones/crear/tipo-oficina',
+        component: TipoOficinaCreateComponent
+      },
+      {
+        path: 'divisiones/editar/tipo-oficina/:id',
+        component: TipoOficinaEditComponent
+      },
+      {
+        path: 'divisiones/detalles/tipo-oficina/:id',
+        component: TipoOficinaShowComponent
+      },
 
-  // organismos
-  {
-    path:'divisiones/organismos',
-    component: OrganismosComponent
-  },
-  {
-    path:'divisiones/crear/organismo',
-    component: OrganismoCreateComponent
-  },
-  {
-    path:'divisiones/editar/organismo/:id',
-    component: OrganismoEditComponent
-  },
-  {
-    path:'divisiones/detalles/organismo/:id',
-    component: OrganismoShowComponent
-  },
+      // occm
+      {
+        path: 'divisiones/occm',
+        component: OccmComponent
+      },
+      {
+        path: 'divisiones/crear/occm',
+        component: OccmCreateComponent
+      },
+      {
+        path: 'divisiones/editar/occm/:id',
+        component: OccmEditComponent
+      },
+      {
+        path: 'divisiones/detalles/occm/:id',
+        component: OccmShowComponent
+      },
 
-  // zonas
-  {
-    path: 'divisiones/zonas', component: ZonasComponent
-  },
-  {
-    path: 'divisiones/crear/zona', component: ZonaCreateComponent
-  },
-  {
-    path: 'divisiones/editar/zona', component: ZonaEditComponent
-  },
-  {
-    path: 'divisiones/detalles/zona', component: ZonaShowComponent
-  },
-  // rutas Operaciones
-  // {
-  //   path:'operaciones/duplicados', component: DuplicarComponent
-  // },
-  // {
-  //   path:'operaciones/crear/duplicado', component: AddDuplicadoComponent
-  // },
-  // {
-  //   path:'operaciones/editar/duplicado/:id', component: UpdateDuplicadoComponent
-  // },
-  // {
-  //   path:'operaciones/duplicados-vista-tarjetas', component: CardsListDuplicadosComponent
-  // },
-  {
-    path:'**',
-    pathMatch: 'full',
-    redirectTo:'divisiones/provincias'
-  }
+      // organismos
+      {
+        path: 'divisiones/organismos',
+        component: OrganismosComponent
+      },
+      {
+        path: 'divisiones/crear/organismo',
+        component: OrganismoCreateComponent
+      },
+      {
+        path: 'divisiones/editar/organismo/:id',
+        component: OrganismoEditComponent
+      },
+      {
+        path: 'divisiones/detalles/organismo/:id',
+        component: OrganismoShowComponent
+      },
+
+      // Zonas
+      {
+        path: 'divisiones/zonas', component: ZonasComponent
+      },
+      {
+        path: 'divisiones/crear/zona', component: ZonaCreateComponent
+      },
+      {
+        path: 'divisiones/editar/zona/:id', component: ZonaEditComponent
+      },
+      {
+        path: 'divisiones/detalles/zona/:id', component: ZonaShowComponent
+      },
+
+      //Calendarios
+      {
+        path: 'divisiones/calendarios', component: CalendariosComponent
+      },
+      {
+        path: 'divisiones/crear/calendario', component: CalendariosCreateComponent
+      },
+      {
+        path: 'divisiones/editar/calendario/:id', component: CalendariosEditComponent
+      },
+      {
+        path: 'divisiones/detalles/calendario/:id', component: CalendariosShowComponent
+      },
+
+      //Tipo de Oficina
+      {
+        path: 'divisiones/tipoOficinas', component: TiposOficinasComponent
+      },
+      {
+        path: 'divisiones/crear/tipoOficina', component: TipoOficinaCreateComponent
+      },
+      {
+        path: 'divisiones/editar/tipoOficina/:id', component: TipoOficinaEditComponent
+      },
+      {
+        path: 'divisiones/detalles/tipoOficina/:id', component: TipoOficinaShowComponent
+      },
+
+      //Tipo de Oficina
+      {
+        path: 'divisiones/tipoOficinas', component: TiposOficinasComponent
+      },
+      {
+        path: 'divisiones/crear/tipoOficina', component: TipoOficinaCreateComponent
+      },
+      {
+        path: 'divisiones/editar/tipoOficina/:id', component: TipoOficinaEditComponent
+      },
+      {
+        path: 'divisiones/detalles/tipoOficina/:id', component: TipoOficinaShowComponent
+      },
+
+      // rutas Operaciones
+      // {
+      //   path:'operaciones/duplicados', component: DuplicarComponent
+      // },
+      // {
+      //   path:'operaciones/crear/duplicado', component: AddDuplicadoComponent
+      // },
+      // {
+      //   path:'operaciones/editar/duplicado/:id', component: UpdateDuplicadoComponent
+      // },
+      // {
+      //   path:'operaciones/duplicados-vista-tarjetas', component: CardsListDuplicadosComponent
+      // },
+      {
+        path: '**',
+        pathMatch: 'full',
+        redirectTo: 'divisiones/provincias'
+      }
     ]
 
   }
- 
+
 ];
 
 @NgModule({
   declarations: [],
   imports: [
     CommonModule,
-    RouterModule.forChild( routes )
+    RouterModule.forChild(routes)
   ]
 })
 export class NomencladoresRoutingModule { }

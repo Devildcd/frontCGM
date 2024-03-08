@@ -5,6 +5,7 @@ import { switchMap } from 'rxjs';
 import { ConsejoPopular } from 'src/app/nomencladores/interfaces/consejo-popular.interface';
 import { Distrito } from 'src/app/nomencladores/interfaces/distritos.interface';
 import { Municipio } from 'src/app/nomencladores/interfaces/municipio.interfaces';
+import { OCCM } from 'src/app/nomencladores/interfaces/occm.interface';
 import { NomencladoresService } from 'src/app/nomencladores/services/nomencladores.service';
 import Swal from 'sweetalert2';
 
@@ -15,6 +16,7 @@ import Swal from 'sweetalert2';
 })
 export class ConsejoPopularEditComponent {
   cpopulares!: ConsejoPopular;
+  occms?: OCCM[];
   municipios!: Municipio[];
   distritos!:Distrito[]
   submitted = false;
@@ -42,12 +44,17 @@ export class ConsejoPopularEditComponent {
         this.formEditar.patchValue({ 
           id_cpopular: cpopulares.id_cpopular,
           nombre: cpopulares.nombre,
-          occm: cpopulares.occm,
+          occm: cpopulares.occm?.id,
           municipio_id: cpopulares.municipio_id.id,
-          distrito_id:cpopulares.distrito_id.id,
+          distrito_id: cpopulares.distrito_id.id,
           activo: cpopulares.activo
          });
       });
+      this.nomencladoresService.getOCCMS().subscribe(
+        (occms)=>{
+          this.occms = occms
+        }
+      )
       this.nomencladoresService.getMunicipios().subscribe(
         (municipios)=>{
           this.municipios = municipios

@@ -71,12 +71,12 @@
           
               <ng-container matColumnDef="id_zona">
                 <th mat-header-cell *matHeaderCellDef><strong> IDENTIFICADOR </strong></th>
-                <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let zona"> {{zona.id_zona}} </td>
+                <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let zona"> <a [routerLink]="['/nomencladores/divisiones/detalles/zona/', zona.id]" class="link-estilizado"> {{zona.id_zona}} </a> </td>
               </ng-container>
               
               <ng-container matColumnDef="nombre">
                 <th mat-header-cell *matHeaderCellDef><strong> NOMBRE </strong></th>
-                <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let zona"> {{zona.nombre}} </td>
+                <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let zona"> <a [routerLink]="['/nomencladores/divisiones/detalles/zona/', zona.id]" class="link-estilizado"> {{zona.nombre}} </a> </td>
               </ng-container>
             
               <!-- <ng-container matColumnDef="activo">
@@ -88,8 +88,8 @@
                 <th mat-header-cell *matHeaderCellDef><strong>Acciones</strong></th>
                 <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let element">
                   <div class="d-flex">
-                    <button mat-mini-fab color="primary" style="margin-right: 5px;">
-                      <i class="fa fa-edit" [routerLink]="['/nomencladores/divisiones/editar/zona', element.id]" aria-hidden="true"></i>
+                    <button [routerLink]="['/nomencladores/divisiones/editar/zona', element.id]" mat-mini-fab color="primary" style="margin-right: 5px;">
+                      <i class="fa fa-edit" aria-hidden="true"></i>
 
                      </button>
                      <button mat-mini-fab (click)="eliminarZona(element.id)" color="warn">

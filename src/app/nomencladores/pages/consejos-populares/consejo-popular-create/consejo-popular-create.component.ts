@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ConsejoPopular } from 'src/app/nomencladores/interfaces/consejo-popular.interface';
 import { Distrito } from 'src/app/nomencladores/interfaces/distritos.interface';
 import { Municipio } from 'src/app/nomencladores/interfaces/municipio.interfaces';
+import { OCCM } from 'src/app/nomencladores/interfaces/occm.interface';
 import { NomencladoresService } from 'src/app/nomencladores/services/nomencladores.service';
 import Swal from 'sweetalert2';
 
@@ -14,8 +15,9 @@ import Swal from 'sweetalert2';
 })
 export class ConsejoPopularCreateComponent {
 
-  cpopulares!: ConsejoPopular;
+  cpopular!: ConsejoPopular;
   municipios!:Municipio[];
+  occms!: OCCM[];
   distritos!:Distrito[]
 
   constructor(
@@ -33,6 +35,11 @@ export class ConsejoPopularCreateComponent {
     this.nomencladoresService.getDistritos().subscribe(
       (distritos)=>{
         this.distritos = distritos
+      }
+    )
+    this.nomencladoresService.getOCCMS().subscribe(
+      (occms)=>{
+        this.occms = occms
       }
     )
   }
@@ -58,12 +65,12 @@ export class ConsejoPopularCreateComponent {
       return;
     }
 
-    this.cpopulares = {
+    this.cpopular = {
       ...this.formCrear.value,
     };
-    this.nomencladoresService.postConsejoPopular(this.cpopulares).subscribe(
+    this.nomencladoresService.postConsejoPopular(this.cpopular).subscribe(
       (consejoPopularCreada) => {
-        this.cpopulares = consejoPopularCreada;
+        this.cpopular = consejoPopularCreada;
         Swal.fire({
           icon: 'success',
           title: '¡Éxito!',
@@ -72,7 +79,7 @@ export class ConsejoPopularCreateComponent {
           timer: 1000,
         });
         setTimeout(() => {
-          this.router.navigate(['/nomencladores/lista/cpopular/', this.cpopulares.id]);
+          this.router.navigate(['/nomencladores/divisiones/detalles/consejo-popular/', this.cpopular.id]);
         }, 1000);
       }
       // error => {

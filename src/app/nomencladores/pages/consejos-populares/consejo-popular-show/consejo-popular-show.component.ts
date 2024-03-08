@@ -31,6 +31,7 @@ export class ConsejoPopularShowComponent {
         this.formEditar.patchValue({ 
           id_cpopular: cpopulares.id_cpopular,
           nombre: cpopulares.nombre,
+          occm: cpopulares.occm?.id_occm,
           municipio_id: cpopulares.municipio_id.nombre,
           distrito_id: cpopulares.distrito_id.nombre
          });
@@ -40,6 +41,7 @@ export class ConsejoPopularShowComponent {
   formEditar: FormGroup = this.fb.group({
     id_cpopular: [''],
     nombre: [''],
+    occm: [''],
     municipio_id: [''],
     distrito_id: [''],
     activo: [true],

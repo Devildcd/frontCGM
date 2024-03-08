@@ -29,13 +29,18 @@
                 </mat-form-field>
 
                 <mat-form-field class="example-form-field">
+                  <mat-label>OCCM</mat-label>
+                  <input matInput formControlName="occm" readonly>
+                </mat-form-field>
+
+                <mat-form-field class="example-form-field">
                     <mat-label>Municipio</mat-label>
                     <input matInput formControlName="municipio_id" readonly>
                   </mat-form-field>
               </div>
 
               <div class="example-button-container">
-                <button mat-raised-button [routerLink]="['/nomencladores/divisiones/distritos']" color="secundary">Volver</button>
+                <button mat-raised-button [routerLink]="['/nomencladores/divisiones/provincias']" color="secundary">Volver</button>
               </div>
     
         </form>

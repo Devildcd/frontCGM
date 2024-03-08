@@ -1,18 +1,18 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { tipoOficina } from 'src/app/nomencladores/interfaces/tipo-oficina.interface';
+import { Calendario } from 'src/app/nomencladores/interfaces/calendario.interface';
 import { NomencladoresService } from 'src/app/nomencladores/services/nomencladores.service';
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-tipo-oficina-create',
-  templateUrl: './tipo-oficina-create.component.html',
-  styleUrls: ['./tipo-oficina-create.component.css']
+  selector: 'app-calendarios-create',
+  templateUrl: './calendarios-create.component.html',
+  styleUrls: ['./calendarios-create.component.css']
 })
-export class TipoOficinaCreateComponent {
+export class CalendariosCreateComponent {
 
-  tipoOficina!: tipoOficina;
+  calendario!: Calendario;
   submitted = false;
 
   constructor(
@@ -22,13 +22,11 @@ export class TipoOficinaCreateComponent {
   ) {}
 
   formCrear: FormGroup = this.fb.group({
-    identificador: ['', Validators.required],
     descripcion: ['', Validators.required],
     activo: [true],
   });
 
-  crearTipoOficina() {
-
+  crearCalendario() {
     if (this.formCrear.invalid || this.formCrear.untouched) {
       // El formulario es inválido o no se ha tocado
       Swal.fire({
@@ -40,21 +38,21 @@ export class TipoOficinaCreateComponent {
       return;
     }
 
-    this.tipoOficina = {
+    this.calendario= {
       ...this.formCrear.value,
     };
-    this.nomencladoresService.posttipoOficina(this.tipoOficina).subscribe(
-      (tipoOficinaCreada) => {
-        this.tipoOficina = tipoOficinaCreada;
+    this.nomencladoresService.postCalendario(this.calendario).subscribe(
+      (CalendarioCreado) => {
+        this.calendario = CalendarioCreado;
         Swal.fire({
           icon: 'success',
           title: '¡Éxito!',
-          text: 'Tipo Oficina creada',
+          text: 'Calendario creado',
           showConfirmButton: false,
           timer: 1000,
         });
         setTimeout(() => {
-          this.router.navigate(['/nomencladores/divisiones/detalles/tipoOficina', this.tipoOficina.id]);
+          this.router.navigate(['/nomencladores/divisiones/detalles/calendario', this.calendario.id]);
         }, 1000);
       }
       // error => {
