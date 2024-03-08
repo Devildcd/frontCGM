@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Provincia } from '../interfaces/provincia.interface';
 import { Municipio } from '../interfaces/municipio.interfaces';
@@ -8,6 +8,8 @@ import { Zona } from '../interfaces/zona.interface';
 import { Distrito } from '../interfaces/distritos.interface';
 import { ConsejoPopular } from '../interfaces/consejo-popular.interface';
 import { Calle } from '../interfaces/calles.interface';
+import { DecretoLey } from '../interfaces/decreto-ley.interface';
+import { TipoMulta } from '../interfaces/tipo-multa.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -191,7 +193,7 @@ deleteZona( id: number ): Observable<Zona> {
   }
 
 
-  putCalle( id: number, calle: ConsejoPopular ): Observable<Calle> {
+  putCalle( id: number, calle: Calle ): Observable<Calle> {
 
     return this.http.put<Calle>( `${this.baseUrl}/editar/calle/${id}/`, calle );
   }
@@ -201,5 +203,72 @@ deleteZona( id: number ): Observable<Zona> {
 
     return this.http.delete<Calle>( `${this.baseUrl}/eliminar/calle/${id}/` );
   }
+
+  // ******Funciones para Decreto-ley********
+  getDecretos(): Observable<DecretoLey[]> {
+
+    return this.http.get<DecretoLey[]>( `${this.baseUrl}/lista/DecretoLey/` );
+  }
+
+
+  getDecreto( id:number ): Observable<DecretoLey> {
+
+    return this.http.get<DecretoLey>( `${this.baseUrl}/detalle/DecretoLey/${id}/`  );
+  }
+
+
+  postDecreto( calle: DecretoLey ): Observable<DecretoLey> {
+
+    return this.http.post<DecretoLey>( `${this.baseUrl}/crear/DecretoLey/`, calle );
+  }
+
+
+  putDecreto( id: number, calle: DecretoLey ): Observable<DecretoLey> {
+
+    return this.http.put<DecretoLey>( `${this.baseUrl}/editar/DecretoLey/${id}/`, calle );
+  }
+  
+
+  deleteDecreto( id:number ): Observable<DecretoLey> {
+
+    return this.http.delete<DecretoLey>( `${this.baseUrl}/eliminar/DecretoLey/${id}/` );
+  }
+
+
+  // ******Funciones para tipo-multa********
+  getTiposMultas(): Observable<TipoMulta[]> {
+
+    return this.http.get<TipoMulta[]>( `${this.baseUrl}/lista/tipoMulta/` );
+  }
+
+
+  getTipoMulta( id:number ): Observable<TipoMulta> {
+
+    return this.http.get<TipoMulta>( `${this.baseUrl}/detalle/tipoMulta/${id}/`  );
+  }
+
+
+  postTipoMulta( calle: TipoMulta ): Observable<TipoMulta> {
+
+    return this.http.post<TipoMulta>( `${this.baseUrl}/crear/tipoMulta/`, calle );
+  }
+
+
+  putTipoMulta( id: number, calle: TipoMulta ): Observable<TipoMulta> {
+
+    return this.http.put<TipoMulta>( `${this.baseUrl}/editar/tipoMulta/${id}/`, calle );
+  }
+  
+
+  deleteTipoMulta( id:number ): Observable<Calle> {
+
+    return this.http.delete<Calle>( `${this.baseUrl}/eliminar/tipoMulta/${id}/` );
+  }
+
+
+
+  
+
+  
 
 }

@@ -8,25 +8,25 @@ import { NomencladoresService } from 'src/app/nomencladores/services/nomenclador
 @Component({
   selector: 'app-municipio-show',
   templateUrl: './municipio-show.component.html',
-  styleUrls: ['./municipio-show.component.css']
+  styleUrls: ['./municipio-show.component.css'],
 })
 export class MunicipioShowComponent {
-
   municipio!: Municipio;
   loading = true;
 
-  constructor( private nomencladoresService: NomencladoresService, private activeRoute: ActivatedRoute, private fb: FormBuilder, ) {}
+  constructor(
+    private nomencladoresService: NomencladoresService,
+    private activeRoute: ActivatedRoute,
+    private fb: FormBuilder
+  ) {}
 
   ngOnInit() {
-
     this.activeRoute.params
-      .pipe(
-        switchMap(({ id }) => this.nomencladoresService.getMunicipio( id ))
-      )
+      .pipe(switchMap(({ id }) => this.nomencladoresService.getMunicipio(id)))
       .subscribe((municipio) => {
         this.municipio = municipio;
         this.loading = false;
-        console.log(  this.municipio );
+        console.log(this.municipio);
 
         this.formEditar.patchValue({ ...municipio });
       });
@@ -38,5 +38,4 @@ export class MunicipioShowComponent {
     provincia_id: [''],
     activo: [true],
   });
-
 }

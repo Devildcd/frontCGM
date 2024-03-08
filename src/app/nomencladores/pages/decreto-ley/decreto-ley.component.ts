@@ -1,22 +1,23 @@
-import { Component, ViewChild } from '@angular/core';
-import { NomencladoresService } from '../../services/nomencladores.service';
-import { Router } from '@angular/router';
-import { Municipio } from '../../interfaces/municipio.interfaces';
-import { MatTableDataSource } from '@angular/material/table';
 import { SelectionModel } from '@angular/cdk/collections';
+import { Component, ViewChild } from '@angular/core';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { DecretoLey } from '../../interfaces/decreto-ley.interface';
+import { NomencladoresService } from '../../services/nomencladores.service';
 
 @Component({
-  selector: 'app-municipios',
-  templateUrl: './municipios.component.html',
-  styleUrls: ['./municipios.component.css']
+  selector: 'app-decreto-ley',
+  templateUrl: './decreto-ley.component.html',
+  styleUrls: ['./decreto-ley.component.css']
 })
-export class MunicipiosComponent {
-  municipios: Municipio[] = [];
-  displayedColumns: string[] = ['select', 'id_municipio', 'nombre','provincia_id', 'actions'];
-  dataSource = new MatTableDataSource<Municipio>([]);
-  selection = new SelectionModel<Municipio>(true, []);
+export class DecretoLeyComponent {
+
+  decretos: DecretoLey[] = [];
+  displayedColumns: string[] = ['select', 'id_decreto_ley', 'descripcion', 'actions'];
+  dataSource = new MatTableDataSource<DecretoLey>([]);
+  selection = new SelectionModel<DecretoLey>(true, []);
   loading = true;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -24,20 +25,20 @@ export class MunicipiosComponent {
   constructor( private nomencladoresService: NomencladoresService, private router: Router ) {}
 
   ngOnInit() {
-    this.cargarMunicipios();
+    this.cargarProvincias();
   }
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
   }
 
-  cargarMunicipios(){
-    
-    this.nomencladoresService.getMunicipios().subscribe(
-      (municipios) => {
-        this.municipios = municipios;
-        this.dataSource.data = municipios;
-        console.log(this.municipios);
+  cargarProvincias() {
+
+    this.nomencladoresService.getDecretos().subscribe(
+      (decretos) => {
+        this.decretos = decretos;
+        this.dataSource.data = decretos;
+        console.log(this.decretos);
         this.loading = false;
       },
       // (error) => {
@@ -75,11 +76,11 @@ export class MunicipiosComponent {
   }
 
   /** The label for the checkbox on the passed row */
-  checkboxLabel(row?: Municipio): string {
+  checkboxLabel(row?: DecretoLey): string {
     if (!row) {
       return `${this.isAllSelected() ? 'deselect' : 'select'} all`;
     }
-    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.id_municipio + 1}`;
+    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.id_decreto_ley + 1}`;
   }
 
   length = 50;
@@ -107,7 +108,7 @@ export class MunicipiosComponent {
     }
   }
 
-  eliminarMunicipio(id: number) {
+  eliminarProvincia(id: number) {
     if (id !== undefined) {
       Swal.fire({
         title: '¿Estás seguro?',
@@ -120,15 +121,11 @@ export class MunicipiosComponent {
         cancelButtonText: 'Cancelar',
       }).then((result) => {
         if (result.isConfirmed) {
-          this.nomencladoresService.deleteMunicipio(id).subscribe(
+          this.nomencladoresService.deleteProvincia(id).subscribe(
             () => {
               // Eliminar sin recargar la página
-              const index = this.municipios.findIndex((municipio) => municipio.id === id);
-              if (index !== -1) {
-                this.municipios.splice(index, 1);
-              }
-              this.cargarMunicipios();
-              console.log('Estudiante eliminado exitosamente');
+              this.cargarProvincias();
+              console.log('Provincia eliminado exitosamente');
             },
             // (error) => {
             //   console.error(error);
@@ -149,5 +146,4 @@ export class MunicipiosComponent {
       });
     }
   }
-
 }

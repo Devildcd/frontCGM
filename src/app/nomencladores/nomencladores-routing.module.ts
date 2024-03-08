@@ -40,6 +40,14 @@ import { ZonaCreateComponent } from './pages/zonas/zona-create/zona-create.compo
 import { ZonaEditComponent } from './pages/zonas/zona-edit/zona-edit.component';
 import { ZonaShowComponent } from './pages/zonas/zona-show/zona-show.component';
 import { ZonasComponent } from './pages/zonas/zonas.component';
+import { TiposMultasComponent } from './pages/tipos-multas/tipos-multas.component';
+import { TipoMultaCreateComponent } from './pages/tipos-multas/tipo-multa-create/tipo-multa-create.component';
+import { TipoMultaEditComponent } from './pages/tipos-multas/tipo-multa-edit/tipo-multa-edit.component';
+import { TipoMultaShowComponent } from './pages/tipos-multas/tipo-multa-show/tipo-multa-show.component';
+import { DecretoLeyComponent } from './pages/decreto-ley/decreto-ley.component';
+import { DecretoLeyCreateComponent } from './pages/decreto-ley/decreto-ley-create/decreto-ley-create.component';
+import { DecretoLeyEditComponent } from './pages/decreto-ley/decreto-ley-edit/decreto-ley-edit.component';
+import { DecretoLeyShowComponent } from './pages/decreto-ley/decreto-ley-show/decreto-ley-show.component';
 
 const routes: Routes = [
 
@@ -201,11 +209,41 @@ const routes: Routes = [
     path: 'divisiones/crear/zona', component: ZonaCreateComponent
   },
   {
-    path: 'divisiones/editar/zona', component: ZonaEditComponent
+    path: 'divisiones/editar/zona/:id', component: ZonaEditComponent
   },
   {
-    path: 'divisiones/detalles/zona', component: ZonaShowComponent
+    path: 'divisiones/detalles/zona/:id', component: ZonaShowComponent
   },
+
+  // tipos-multas
+  {
+    path: 'divisiones/tipos-multas', component: TiposMultasComponent
+  },
+  {
+    path: 'divisiones/crear/tipo-multa', component: TipoMultaCreateComponent
+  },
+  {
+    path: 'divisiones/editar/tipo-multa/:id', component: TipoMultaEditComponent
+  },
+  {
+    path: 'divisiones/detalles/tipo-multa/:id', component: TipoMultaShowComponent
+  },
+
+  // decreto-ley
+  {
+    path: 'divisiones/decretos-ley', component: DecretoLeyComponent
+  },
+  {
+    path: 'divisiones/crear/decreto-ley', component: DecretoLeyCreateComponent
+  },
+  {
+    path: 'divisiones/editar/decreto-ley/:id', component: DecretoLeyEditComponent
+  },
+  {
+    path: 'divisiones/detalles/decreto-ley/:id', component: DecretoLeyShowComponent
+  },
+
+  
   // rutas Operaciones
   // {
   //   path:'operaciones/duplicados', component: DuplicarComponent

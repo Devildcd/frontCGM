@@ -116,11 +116,11 @@ export class CallesComponent {
         showCancelButton: true,
         confirmButtonColor: ' #3f51b5',
         cancelButtonColor: '#f44336',
-        confirmButtonText: 'Sí, eliminarlo',
+        confirmButtonText: 'Sí, eliminar',
         cancelButtonText: 'Cancelar',
       }).then((result) => {
         if (result.isConfirmed) {
-          this.nomencladoresService.deleteProvincia(id).subscribe(
+          this.nomencladoresService.deleteCalle(id).subscribe(
             () => {
               // Eliminar sin recargar la página
               this.cargarCalles();

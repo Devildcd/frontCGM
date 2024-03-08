@@ -1,4 +1,5 @@
 
+
 <div class="container-pers">
 
     <div class="card card d-flex flex-column">
@@ -6,41 +7,37 @@
         <div class="row">
           <div class="col-md-8">
              
-              <h2 style="color: rgb(95, 95, 95);">Provincias</h2>
+              <h2 style="color: rgb(95, 95, 95);">Decretos Ley</h2>
           </div>
           
           <div class="row justify-content-end">
             <div class="col-md-5">
-          
-              <div class="input-group">
-                <input type="text" class="form-control" placeholder="Buscar" [(ngModel)]="criteriosDeBusqueda">
-                <div class="input-group-append">
-                  <button class="search-boton-pers" (click)="buscar()" mat-raised-button color="secondary" type="submit">
-                    <i class="fa fa-search"></i>
-                  </button>
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Buscar">
+                    <div class="input-group-append">
+                        <button class="search-boton-pers" mat-raised-button color="secondary" type="button">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
                 </div>
+            </div>
+        </div>
+      </div>
+  
+        <div class="card-body flex-grow-1" style="margin-top: -20px;">
+          
+          <div class="row mt-3">
+            <div class="col-md-8">
+              <div class="button-pers">
+                <button mat-raised-button color="primary" [routerLink]="['/nomencladores/divisiones/crear/decreto-ley']">Crear</button>
+                <button mat-raised-button color="secundary" style="margin-left: 5px;">Importar</button>
               </div>
             </div>
-          </div>
-          </div>
-          
-          <div class="card-body flex-grow-1" style="margin-top: -20px;">
-          
-            <div class="row mt-3">
-              <div class="col-md-8">
-                <div class="button-pers">
-                  <button mat-raised-button color="primary"
-                    [routerLink]="['/nomencladores/divisiones/crear/provincia']">Crear</button>
-                  <button mat-raised-button color="secundary" style="margin-left: 5px;">Importar</button>
-                </div>
-              </div>
-          
-              <div class="additional-buttons"
-                style="display: flex; justify-content: flex-end; align-items: center; margin-top: -45px; margin-bottom: 10px;">
-                <div>
-                  <button mat-mini-fab color="secundary" style="margin-left: 5px;"><i class="fa fa-th-list"
-                      aria-hidden="true"></i></button>
-                  <button mat-mini-fab color="secundary" style="margin-left: 5px;"><i class="fa fa-th" aria-hidden="true"></i></button>
+      
+            <div class="additional-buttons" style="display: flex; justify-content: flex-end; align-items: center; margin-top: -45px; margin-bottom: 10px;">
+              <div>
+              <button mat-mini-fab color="secundary" style="margin-left: 5px;"><i class="fa fa-th-list" aria-hidden="true"></i></button>
+              <button mat-mini-fab color="secundary" style="margin-left: 5px;"><i class="fa fa-th" aria-hidden="true"></i></button>
               </div>
               
             </div>
@@ -72,15 +69,15 @@
               </ng-container> 
           
               
-              <ng-container matColumnDef="id_provincia">
+              <ng-container matColumnDef="id_decreto_ley">
                 <th mat-header-cell *matHeaderCellDef><strong> Identificador </strong></th>
-                <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let provincia"> <a [routerLink]="['/nomencladores/divisiones/detalles/provincia/', provincia.id]" class="link-estilizado">{{provincia.id_provincia}} </a> </td>
+                <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let element"> <a [routerLink]="['/nomencladores/divisiones/detalles/decreto-ley/', element.id]" class="link-estilizado"> {{element.id_decreto_ley}} </a> </td>
               </ng-container>
             
               
-              <ng-container matColumnDef="nombre">
+              <ng-container matColumnDef="descripcion">
                 <th mat-header-cell *matHeaderCellDef><strong> Nombre </strong></th>
-                <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let provincia"> <a [routerLink]="['/nomencladores/divisiones/detalles/provincia/', provincia.id]" class="link-estilizado">{{provincia.nombre}} </a> </td>
+                <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let element"> <a [routerLink]="['/nomencladores/divisiones/detalles/decreto-ley/', element.id]" class="link-estilizado"> {{element.descripcion}} </a> </td>
               </ng-container>
             
               <!-- <ng-container matColumnDef="activo">
@@ -92,8 +89,8 @@
                 <th mat-header-cell *matHeaderCellDef><strong>Acciones</strong></th>
                 <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let element">
                   <div class="d-flex">
-                    <button mat-mini-fab color="primary" style="margin-right: 5px;">
-                      <i class="fa fa-edit" [routerLink]="['/nomencladores/divisiones/editar/provincia', element.id]" aria-hidden="true"></i>
+                    <button mat-mini-fab color="primary" [routerLink]="['/nomencladores/divisiones/editar/decreto-ley/', element.id]" aria-hidden="true" style="margin-right: 5px;">
+                      <i class="fa fa-edit"></i>
                      </button>
                      <button mat-mini-fab (click)="eliminarProvincia(element.id)" color="warn">
                         <i class="fa fa-trash" aria-hidden="true"></i>
@@ -127,3 +124,4 @@
         </div>
     </div>
   </div> 
+

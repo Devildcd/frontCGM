@@ -38,11 +38,19 @@ import { OrganismoCreateComponent } from './pages/organismos/organismo-create/or
 import { OrganismoEditComponent } from './pages/organismos/organismo-edit/organismo-edit.component';
 import { OrganismoShowComponent } from './pages/organismos/organismo-show/organismo-show.component';
 import { HomeComponent } from './pages/home/home.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ZonasComponent } from './pages/zonas/zonas.component';
 import { ZonaShowComponent } from './pages/zonas/zona-show/zona-show.component';
 import { ZonaEditComponent } from './pages/zonas/zona-edit/zona-edit.component';
 import { ZonaCreateComponent } from './pages/zonas/zona-create/zona-create.component';
+import { TiposMultasComponent } from './pages/tipos-multas/tipos-multas.component';
+import { TipoMultaCreateComponent } from './pages/tipos-multas/tipo-multa-create/tipo-multa-create.component';
+import { TipoMultaEditComponent } from './pages/tipos-multas/tipo-multa-edit/tipo-multa-edit.component';
+import { TipoMultaShowComponent } from './pages/tipos-multas/tipo-multa-show/tipo-multa-show.component';
+import { DecretoLeyComponent } from './pages/decreto-ley/decreto-ley.component';
+import { DecretoLeyCreateComponent } from './pages/decreto-ley/decreto-ley-create/decreto-ley-create.component';
+import { DecretoLeyEditComponent } from './pages/decreto-ley/decreto-ley-edit/decreto-ley-edit.component';
+import { DecretoLeyShowComponent } from './pages/decreto-ley/decreto-ley-show/decreto-ley-show.component';
 
 
 
@@ -85,6 +93,14 @@ import { ZonaCreateComponent } from './pages/zonas/zona-create/zona-create.compo
     ZonaShowComponent,
     ZonaEditComponent,
     ZonaCreateComponent,
+    TiposMultasComponent,
+    TipoMultaCreateComponent,
+    TipoMultaEditComponent,
+    TipoMultaShowComponent,
+    DecretoLeyComponent,
+    DecretoLeyCreateComponent,
+    DecretoLeyEditComponent,
+    DecretoLeyShowComponent,
   
   ],
   imports: [
@@ -93,7 +109,8 @@ import { ZonaCreateComponent } from './pages/zonas/zona-create/zona-create.compo
     MaterialModule,
     SharedModule,
     RouterModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ]
 })
 export class NomencladoresModule { }

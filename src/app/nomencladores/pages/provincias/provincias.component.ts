@@ -1,5 +1,6 @@
 import { SelectionModel } from '@angular/cdk/collections';
 import { Component, ViewChild } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
@@ -21,9 +22,13 @@ export class ProvinciasComponent {
   selection = new SelectionModel<Provincia>(true, []);
   loading = true;
 
+  criteriosDeBusqueda: string = '';
+
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  constructor( private nomencladoresService: NomencladoresService, private router: Router ) {}
+  constructor( private nomencladoresService: NomencladoresService, private router: Router, 
+               private fb: FormBuilder ) {
+  }
 
   ngOnInit() {
     this.cargarProvincias();
@@ -31,6 +36,34 @@ export class ProvinciasComponent {
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
+  }
+
+  buscar() {
+    const criteriosArray = this.criteriosDeBusqueda.split(',').map(criterio => criterio.trim());
+    // Lógica para buscar utilizando los criteriosArray
+    // Actualiza la lógica según tus necesidades
+    this.filterProvincias(criteriosArray);
+  }
+
+  filterProvincias(criterios: string[]): void {
+    // Lógica para filtrar las provincias según los criterios de búsqueda
+    // Puedes utilizar la función filter y otras lógicas según tus necesidades
+    this.dataSource.data = this.provincias.filter(provincia =>
+      criterios.some(criterio =>
+        provincia.nombre.toLowerCase().includes(criterio.toLowerCase())
+      )
+    );
+  }
+
+  limpiarInput() {
+    // Guarda los valores anteriores si es necesario
+    const valoresAnteriores = this.criteriosDeBusqueda;
+  
+    // Limpia el input
+    this.criteriosDeBusqueda = '';
+  
+    // Puedes utilizar los valores anteriores como necesites
+    console.log('Valores anteriores:', valoresAnteriores);
   }
 
   cargarProvincias() {
