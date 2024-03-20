@@ -6,6 +6,5 @@ export interface TipoMulta {
     duplica: boolean,
     apremia: boolean,
     gestiona: boolean,
-    activo: boolean,
-    decreto_Ley: DecretoLey[]
+    activo: boolean
 }

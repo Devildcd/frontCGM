@@ -13,6 +13,8 @@ import { tipoOficina } from '../interfaces/tipo-oficina.interface';
 import { OCCM } from '../interfaces/occm.interface';
 import { DecretoLey } from '../interfaces/decreto-ley.interface';
 import { TipoMulta } from '../interfaces/tipo-multa.interface';
+import { TipoDocumento } from '../interfaces/tipo-documento.interface';
+import { TipoOperacion } from '../interfaces/tipo-operacion.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -342,21 +344,81 @@ export class NomencladoresService {
   }
 
 
-  postTipoMulta( calle: TipoMulta ): Observable<TipoMulta> {
+  postTipoMulta( tipoMulta: TipoMulta ): Observable<TipoMulta> {
 
-    return this.http.post<TipoMulta>( `${this.baseUrl}/crear/tipoMulta/`, calle );
+    return this.http.post<TipoMulta>( `${this.baseUrl}/crear/tipoMulta/`, tipoMulta );
   }
 
 
-  putTipoMulta( id: number, calle: TipoMulta ): Observable<TipoMulta> {
+  putTipoMulta( id: number, tipoMulta: TipoMulta ): Observable<TipoMulta> {
 
-    return this.http.put<TipoMulta>( `${this.baseUrl}/editar/tipoMulta/${id}/`, calle );
+    return this.http.put<TipoMulta>( `${this.baseUrl}/editar/tipoMulta/${id}/`, tipoMulta );
   }
   
 
-  deleteTipoMulta( id:number ): Observable<Calle> {
+  deleteTipoMulta( id:number ): Observable<TipoMulta> {
 
-    return this.http.delete<Calle>( `${this.baseUrl}/eliminar/tipoMulta/${id}/` );
+    return this.http.delete<TipoMulta>( `${this.baseUrl}/eliminar/tipoMulta/${id}/` );
+  }
+
+  // ******Funciones para tipos-documentos********
+  getTiposDocumentos(): Observable<TipoDocumento[]> {
+
+    return this.http.get<TipoDocumento[]>( `${this.baseUrl}/lista/tipoDocumento/` );
+  }
+
+
+  getTipoDocumento( id:number ): Observable<TipoDocumento> {
+
+    return this.http.get<TipoDocumento>( `${this.baseUrl}/detalle/tipoDocumento/${id}/`  );
+  }
+
+
+  postTipoDocumento( tipoDocumento: TipoDocumento ): Observable<TipoDocumento> {
+
+    return this.http.post<TipoDocumento>( `${this.baseUrl}/crear/tipoDocumento/`, tipoDocumento );
+  }
+
+
+  putTipoDocumento( id: number, tipoDocumento: TipoDocumento ): Observable<TipoDocumento> {
+
+    return this.http.put<TipoDocumento>( `${this.baseUrl}/editar/tipoDocumento/${id}/`, tipoDocumento );
+  }
+  
+
+  deleteTipoDocumento( id:number ): Observable<TipoDocumento> {
+
+    return this.http.delete<TipoDocumento>( `${this.baseUrl}/eliminar/tipoDocumento/${id}/` );
+  }
+
+  // ******Funciones para tipos-operaciones********
+  getTiposOperaciones(): Observable<TipoOperacion[]> {
+
+    return this.http.get<TipoOperacion[]>( `${this.baseUrl}/lista/tipoOperaciones/` );
+  }
+
+
+  getTipoOperacion( id:number ): Observable<TipoOperacion> {
+
+    return this.http.get<TipoOperacion>( `${this.baseUrl}/detalle/tipoOperaciones/${id}/`  );
+  }
+
+
+  postTipoOperacion( tipoOperacion: TipoOperacion ): Observable<TipoOperacion> {
+
+    return this.http.post<TipoOperacion>( `${this.baseUrl}/crear/tipoOperaciones/`, tipoOperacion );
+  }
+
+
+  putTipoOperacion( id: number, tipoOperacion: TipoOperacion ): Observable<TipoOperacion> {
+
+    return this.http.put<TipoOperacion>( `${this.baseUrl}/editar/tipoOperaciones/${id}/`, tipoOperacion );
+  }
+  
+
+  deleteTipoOperacion( id:number ): Observable<TipoOperacion> {
+
+    return this.http.delete<TipoOperacion>( `${this.baseUrl}/eliminar/tipoOperaciones/${id}/` );
   }
 
 }

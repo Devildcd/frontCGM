@@ -19,7 +19,7 @@
       <button [matMenuTriggerFor]="rangos" mat-menu-item>Rangos</button>
       <button [matMenuTriggerFor]="cuentasbancarias" mat-menu-item>Cuentas Bancarias</button>
       <button [matMenuTriggerFor]="categoriasmultas" mat-menu-item>Categorías de las Multas</button>
-      <button mat-menu-item>Decretos Ley</button>
+      <button mat-menu-item [routerLink]="['/nomencladores/divisiones/decretos-ley']">Decretos Ley</button>
       <button mat-menu-item>Artículos</button>
       <button mat-menu-item>Situaciones Laborales</button>
       <button mat-menu-item>Categorías de Peligrosidad</button>
@@ -40,10 +40,10 @@
   
     <mat-menu #tipos="matMenu">
       <button mat-menu-item>Tipos de Multas</button>
-      <button mat-menu-item>Tipos de Documentos</button>
+      <button mat-menu-item [routerLink]="['/nomencladores/divisiones/tipos-documentos']">Tipos de Documentos</button>
       <button mat-menu-item>Tipos de Cobro</button>
       <button mat-menu-item [routerLink]="['/nomencladores/divisiones/tipos-oficinas']">Tipos de Oficinas</button>
-      <button mat-menu-item>Tipos de Operaciones</button>
+      <button mat-menu-item [routerLink]="['/nomencladores/divisiones/tipos-operaciones']">Tipos de Operaciones</button>
       <button mat-menu-item>Tipos de Ajuste</button>
       <button mat-menu-item [routerLink]="['/nomencladores/divisiones/calendarios']">Tipos de Calendarios</button>
     </mat-menu>

@@ -55,7 +55,14 @@ import { DecretoLeyComponent } from './pages/decreto-ley/decreto-ley.component';
 import { DecretoLeyCreateComponent } from './pages/decreto-ley/decreto-ley-create/decreto-ley-create.component';
 import { DecretoLeyEditComponent } from './pages/decreto-ley/decreto-ley-edit/decreto-ley-edit.component';
 import { DecretoLeyShowComponent } from './pages/decreto-ley/decreto-ley-show/decreto-ley-show.component';
-
+import { TiposDocumentosComponent } from './pages/tipos-documentos/tipos-documentos.component';
+import { TipoDocumentoCreateComponent } from './pages/tipos-documentos/tipo-documento-create/tipo-documento-create.component';
+import { TipoDocumentoEditComponent } from './pages/tipos-documentos/tipo-documento-edit/tipo-documento-edit.component';
+import { TipoDocumentoShowComponent } from './pages/tipos-documentos/tipo-documento-show/tipo-documento-show.component';
+import { TiposOperacionesComponent } from './pages/tipos-operaciones/tipos-operaciones.component';
+import { TipoOperacionCreateComponent } from './pages/tipos-operaciones/tipo-operacion-create/tipo-operacion-create.component';
+import { TipoOperacionEditComponent } from './pages/tipos-operaciones/tipo-operacion-edit/tipo-operacion-edit.component';
+import { TipoOperacionShowComponent } from './pages/tipos-operaciones/tipo-operacion-show/tipo-operacion-show.component';
 
 
 @NgModule({
@@ -109,6 +116,15 @@ import { DecretoLeyShowComponent } from './pages/decreto-ley/decreto-ley-show/de
     DecretoLeyCreateComponent,
     DecretoLeyEditComponent,
     DecretoLeyShowComponent,
+    TiposDocumentosComponent,
+    TipoDocumentoCreateComponent,
+    TipoDocumentoEditComponent,
+    TipoDocumentoShowComponent,
+    TiposOperacionesComponent,
+    TipoOperacionCreateComponent,
+    TipoOperacionEditComponent,
+    TipoOperacionShowComponent,
+
   
   ],
   imports: [

@@ -1,4 +1,5 @@
 
+
 <div class="container-pers">
 
     <div class="card card d-flex flex-column">
@@ -6,7 +7,7 @@
         <div class="row">
           <div class="col-md-8">
              
-              <h2 style="color: rgb(95, 95, 95);">Municipios</h2>
+              <h2 style="color: rgb(95, 95, 95);">Tipos de Documentos</h2>
           </div>
           
           <div class="row justify-content-end">
@@ -28,8 +29,7 @@
           <div class="row mt-3">
             <div class="col-md-8">
               <div class="button-pers">
-                <button mat-raised-button color="primary" [routerLink]="['/nomencladores/divisiones/crear/municipio']">Crear</button>
-                <!-- <button mat-raised-button color="primary" >Crear</button> -->
+                <button mat-raised-button color="primary" [routerLink]="['/nomencladores/divisiones/crear/tipo-documento']">Crear</button>
                 <button mat-raised-button color="secundary" style="margin-left: 5px;">Importar</button>
               </div>
             </div>
@@ -75,21 +75,9 @@
               </ng-container> 
           
               
-              <ng-container matColumnDef="id_municipio">
-                <th mat-header-cell *matHeaderCellDef><strong> Identificador </strong></th>
-                <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let municipio"> <a [routerLink]="['/nomencladores/divisiones/detalles/municipio/', municipio.id]" class="link-estilizado"> {{municipio.id_municipio}} </a> </td>
-              </ng-container>
-            
-              
-              <ng-container matColumnDef="nombre">
-                <th mat-header-cell *matHeaderCellDef><strong> Nombre </strong></th>
-                <!-- <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let municipio"> <a [routerLink]="['/nomencladores/divisiones/detalles/municipio/', municipio.id]" class="link-estilizado">{{municipio.nombre}} </a> </td> -->
-                <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let municipio"> <a [routerLink]="['/nomencladores/divisiones/detalles/municipio/', municipio.id]" class="link-estilizado">{{municipio.nombre}} </a> </td>
-              </ng-container>
-
-              <ng-container matColumnDef="provincia_id">
-                <th mat-header-cell *matHeaderCellDef><strong> Provincia </strong></th>
-                <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let municipio"> <a [routerLink]="['/nomencladores/divisiones/detalles/municipio/', municipio.id]" class="link-estilizado">{{municipio.provincia_id.nombre}} </a> </td>
+              <ng-container matColumnDef="descripcion">
+                <th mat-header-cell *matHeaderCellDef><strong> Descripción </strong></th>
+                <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let element"> <a [routerLink]="['/nomencladores/divisiones/detalles/tipo-documento/', element.id]" class="link-estilizado">{{element.descripcion}}</a> </td>
               </ng-container>
             
               <!-- <ng-container matColumnDef="activo">
@@ -101,13 +89,12 @@
                 <th mat-header-cell *matHeaderCellDef><strong>Acciones</strong></th>
                 <td (click)="$event.stopPropagation()" mat-cell *matCellDef="let element">
                   <div class="d-flex">
-                    <button  [routerLink]="['/nomencladores/divisiones/editar/municipio', element.id]" mat-mini-fab color="primary" style="margin-right: 5px;">
+                    <button [routerLink]="['/nomencladores/divisiones/editar/tipo-documento/', element.id]" mat-mini-fab color="primary" style="margin-right: 5px;">
                       <i class="fa fa-edit" aria-hidden="true"></i>
                      </button>
-                     <button mat-mini-fab (click)="eliminarMunicipio(element.id)" color="warn">
+                     <button mat-mini-fab (click)="eliminarTipoDocumento(element.id)" color="warn">
                         <i class="fa fa-trash" aria-hidden="true"></i>
                      </button>
-                     
                   </div>
                 </td>
              </ng-container>
@@ -137,3 +124,4 @@
         </div>
     </div>
   </div> 
+

@@ -34,16 +34,19 @@
                         </div>
                     </div>
 
-                    <div class="additional-buttons"
-                        style="display: flex; justify-content: flex-end; align-items: center; margin-top: -45px; margin-bottom: 10px;">
+                    <div class="additional-buttons" style="display: flex; justify-content: flex-end; align-items: center; margin-top: -45px; margin-bottom: 10px;">
                         <div>
-                            <button mat-mini-fab color="secundary" style="margin-left: 5px;"><i class="fa fa-th-list"
-                                    aria-hidden="true"></i></button>
-                            <button mat-mini-fab color="secundary" style="margin-left: 5px;"><i class="fa fa-th"
-                                    aria-hidden="true"></i></button>
+                          <button mat-mini-fab color="primary" [matMenuTriggerFor]="menu">
+                            <i class="fas fa-ellipsis-v"></i> <!-- Icono de opciones de Font Awesome -->
+                          </button>
+                          
+                          <mat-menu #menu="matMenu">
+                            <button mat-menu-item>Opción 1</button>
+                            <button mat-menu-item>Opción 2</button>
+                          </mat-menu>
                         </div>
-
-                    </div>
+                        
+                      </div>
                 </div>
 
                 <div class="table-responsive">

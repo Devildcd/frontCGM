@@ -52,216 +52,272 @@ import { DecretoLeyComponent } from './pages/decreto-ley/decreto-ley.component';
 import { DecretoLeyCreateComponent } from './pages/decreto-ley/decreto-ley-create/decreto-ley-create.component';
 import { DecretoLeyEditComponent } from './pages/decreto-ley/decreto-ley-edit/decreto-ley-edit.component';
 import { DecretoLeyShowComponent } from './pages/decreto-ley/decreto-ley-show/decreto-ley-show.component';
+import { TiposDocumentosComponent } from './pages/tipos-documentos/tipos-documentos.component';
+import { TipoDocumentoCreateComponent } from './pages/tipos-documentos/tipo-documento-create/tipo-documento-create.component';
+import { TipoDocumentoEditComponent } from './pages/tipos-documentos/tipo-documento-edit/tipo-documento-edit.component';
+import { TipoDocumentoShowComponent } from './pages/tipos-documentos/tipo-documento-show/tipo-documento-show.component';
+import { TiposOperacionesComponent } from './pages/tipos-operaciones/tipos-operaciones.component';
+import { TipoOperacionCreateComponent } from './pages/tipos-operaciones/tipo-operacion-create/tipo-operacion-create.component';
+import { TipoOperacionEditComponent } from './pages/tipos-operaciones/tipo-operacion-edit/tipo-operacion-edit.component';
+import { TipoOperacionShowComponent } from './pages/tipos-operaciones/tipo-operacion-show/tipo-operacion-show.component';
 
 const routes: Routes = [
-
   {
     path: '',
     component: HomeComponent,
     children: [
-
-      //****** Nomencladores******// 
+      //****** Nomencladores******//
       // provincias
       {
         path: 'divisiones/provincias',
-        component: ProvinciasComponent
+        component: ProvinciasComponent,
       },
       {
         path: 'divisiones/crear/provincia',
-        component: ProvinciaCreateComponent
+        component: ProvinciaCreateComponent,
       },
       {
         path: 'divisiones/editar/provincia/:id',
-        component: ProvinciaEditComponent
+        component: ProvinciaEditComponent,
       },
       {
         path: 'divisiones/detalles/provincia/:id',
-        component: ProvinciaShowComponent
+        component: ProvinciaShowComponent,
       },
 
       // municipios
       {
         path: 'divisiones/municipios',
-        component: MunicipiosComponent
+        component: MunicipiosComponent,
       },
       {
         path: 'divisiones/crear/municipio',
-        component: MunicipioCreateComponent
+        component: MunicipioCreateComponent,
       },
       {
         path: 'divisiones/editar/municipio/:id',
-        component: MunicipioEditComponent
+        component: MunicipioEditComponent,
       },
       {
         path: 'divisiones/detalles/municipio/:id',
-        component: MunicipioShowComponent
+        component: MunicipioShowComponent,
       },
 
       // distritos
       {
         path: 'divisiones/distritos',
-        component: DistritosComponent
+        component: DistritosComponent,
       },
       {
         path: 'divisiones/crear/distrito',
-        component: DistritoCreateComponent
+        component: DistritoCreateComponent,
       },
       {
         path: 'divisiones/editar/distrito/:id',
-        component: DistritoEditComponent
+        component: DistritoEditComponent,
       },
       {
         path: 'divisiones/detalles/distrito/:id',
-        component: DistritoShowComponent
+        component: DistritoShowComponent,
       },
 
       // consejos-populares
       {
         path: 'divisiones/consejos-populares',
-        component: ConsejosPopularesComponent
+        component: ConsejosPopularesComponent,
       },
       {
         path: 'divisiones/crear/consejo-popular',
-        component: ConsejoPopularCreateComponent
+        component: ConsejoPopularCreateComponent,
       },
       {
         path: 'divisiones/editar/consejo-popular/:id',
-        component: ConsejoPopularEditComponent
+        component: ConsejoPopularEditComponent,
       },
       {
         path: 'divisiones/detalles/consejo-popular/:id',
-        component: ConsejoPopularShowComponent
+        component: ConsejoPopularShowComponent,
       },
 
       // calles
       {
         path: 'divisiones/calles',
-        component: CallesComponent
+        component: CallesComponent,
       },
       {
         path: 'divisiones/crear/calle',
-        component: CalleCreateComponent
+        component: CalleCreateComponent,
       },
       {
         path: 'divisiones/editar/calle/:id',
-        component: CalleEditComponent
+        component: CalleEditComponent,
       },
       {
         path: 'divisiones/detalles/calle/:id',
-        component: CalleShowComponent
+        component: CalleShowComponent,
       },
 
       // tipos-oficinas
       {
         path: 'divisiones/tipos-oficinas',
-        component: TiposOficinasComponent
+        component: TiposOficinasComponent,
       },
       {
         path: 'divisiones/crear/tipo-oficina',
-        component: TipoOficinaCreateComponent
+        component: TipoOficinaCreateComponent,
       },
       {
         path: 'divisiones/editar/tipo-oficina/:id',
-        component: TipoOficinaEditComponent
+        component: TipoOficinaEditComponent,
       },
       {
         path: 'divisiones/detalles/tipo-oficina/:id',
-        component: TipoOficinaShowComponent
+        component: TipoOficinaShowComponent,
       },
 
       // occm
       {
         path: 'divisiones/occm',
-        component: OccmComponent
+        component: OccmComponent,
       },
       {
         path: 'divisiones/crear/occm',
-        component: OccmCreateComponent
+        component: OccmCreateComponent,
       },
       {
         path: 'divisiones/editar/occm/:id',
-        component: OccmEditComponent
+        component: OccmEditComponent,
       },
       {
         path: 'divisiones/detalles/occm/:id',
-        component: OccmShowComponent
+        component: OccmShowComponent,
       },
 
       // organismos
       {
         path: 'divisiones/organismos',
-        component: OrganismosComponent
+        component: OrganismosComponent,
       },
       {
         path: 'divisiones/crear/organismo',
-        component: OrganismoCreateComponent
+        component: OrganismoCreateComponent,
       },
       {
         path: 'divisiones/editar/organismo/:id',
-        component: OrganismoEditComponent
+        component: OrganismoEditComponent,
       },
       {
         path: 'divisiones/detalles/organismo/:id',
-        component: OrganismoShowComponent
+        component: OrganismoShowComponent,
       },
 
       // Zonas
       {
-        path: 'divisiones/zonas', component: ZonasComponent
+        path: 'divisiones/zonas',
+        component: ZonasComponent,
       },
       {
-        path: 'divisiones/crear/zona', component: ZonaCreateComponent
+        path: 'divisiones/crear/zona',
+        component: ZonaCreateComponent,
       },
       {
-        path: 'divisiones/editar/zona/:id', component: ZonaEditComponent
+        path: 'divisiones/editar/zona/:id',
+        component: ZonaEditComponent,
       },
       {
-        path: 'divisiones/detalles/zona/:id', component: ZonaShowComponent
+        path: 'divisiones/detalles/zona/:id',
+        component: ZonaShowComponent,
       },
 
       //Calendarios
       {
-        path: 'divisiones/calendarios', component: CalendariosComponent
+        path: 'divisiones/calendarios',
+        component: CalendariosComponent,
       },
       {
-        path: 'divisiones/crear/calendario', component: CalendariosCreateComponent
+        path: 'divisiones/crear/calendario',
+        component: CalendariosCreateComponent,
       },
       {
-        path: 'divisiones/editar/calendario/:id', component: CalendariosEditComponent
+        path: 'divisiones/editar/calendario/:id',
+        component: CalendariosEditComponent,
       },
       {
-        path: 'divisiones/detalles/calendario/:id', component: CalendariosShowComponent
+        path: 'divisiones/detalles/calendario/:id',
+        component: CalendariosShowComponent,
       },
 
-      
-	  
-	  // tipos-multas
-  {
-    path: 'divisiones/tipos-multas', component: TiposMultasComponent
-  },
-  {
-    path: 'divisiones/crear/tipo-multa', component: TipoMultaCreateComponent
-  },
-  {
-    path: 'divisiones/editar/tipo-multa/:id', component: TipoMultaEditComponent
-  },
-  {
-    path: 'divisiones/detalles/tipo-multa/:id', component: TipoMultaShowComponent
-  },
+      // tipos-multas
+      {
+        path: 'divisiones/tipos-multas',
+        component: TiposMultasComponent,
+      },
+      {
+        path: 'divisiones/crear/tipo-multa',
+        component: TipoMultaCreateComponent,
+      },
+      {
+        path: 'divisiones/editar/tipo-multa/:id',
+        component: TipoMultaEditComponent,
+      },
+      {
+        path: 'divisiones/detalles/tipo-multa/:id',
+        component: TipoMultaShowComponent,
+      },
 
-  // decreto-ley
-  {
-    path: 'divisiones/decretos-ley', component: DecretoLeyComponent
-  },
-  {
-    path: 'divisiones/crear/decreto-ley', component: DecretoLeyCreateComponent
-  },
-  {
-    path: 'divisiones/editar/decreto-ley/:id', component: DecretoLeyEditComponent
-  },
-  {
-    path: 'divisiones/detalles/decreto-ley/:id', component: DecretoLeyShowComponent
-  },
+      // decreto-ley
+      {
+        path: 'divisiones/decretos-ley',
+        component: DecretoLeyComponent,
+      },
+      {
+        path: 'divisiones/crear/decreto-ley',
+        component: DecretoLeyCreateComponent,
+      },
+      {
+        path: 'divisiones/editar/decreto-ley/:id',
+        component: DecretoLeyEditComponent,
+      },
+      {
+        path: 'divisiones/detalles/decreto-ley/:id',
+        component: DecretoLeyShowComponent,
+      },
+
+      //tipos-documentos
+      {
+        path: 'divisiones/tipos-documentos',
+        component: TiposDocumentosComponent,
+      },
+      {
+        path: 'divisiones/crear/tipo-documento',
+        component: TipoDocumentoCreateComponent,
+      },
+      {
+        path: 'divisiones/editar/tipo-documento/:id',
+        component: TipoDocumentoEditComponent,
+      },
+      {
+        path: 'divisiones/detalles/tipo-documento/:id',
+        component: TipoDocumentoShowComponent,
+      },
+
+      //tipos-operaciones
+      {
+        path: 'divisiones/tipos-operaciones',
+        component: TiposOperacionesComponent,
+      },
+      {
+        path: 'divisiones/crear/tipo-operacion',
+        component: TipoOperacionCreateComponent,
+      },
+      {
+        path: 'divisiones/editar/tipo-operacion/:id',
+        component: TipoOperacionEditComponent,
+      },
+      {
+        path: 'divisiones/detalles/tipo-operacion/:id',
+        component: TipoOperacionShowComponent,
+      },
 
       // rutas Operaciones
       // {
@@ -279,19 +335,14 @@ const routes: Routes = [
       {
         path: '**',
         pathMatch: 'full',
-        redirectTo: 'divisiones/provincias'
-      }
-    ]
-
-  }
-
+        redirectTo: 'divisiones/provincias',
+      },
+    ],
+  },
 ];
 
 @NgModule({
   declarations: [],
-  imports: [
-    CommonModule,
-    RouterModule.forChild(routes)
-  ]
+  imports: [CommonModule, RouterModule.forChild(routes)],
 })
-export class NomencladoresRoutingModule { }
+export class NomencladoresRoutingModule {}
